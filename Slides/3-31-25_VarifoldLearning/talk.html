@@ -257,7 +257,7 @@
 	<textarea data-template>
 	<h4 align="left">Approach 2 : Learned Test Functions</h4><hr>
 	<div class="row" align="left">
-	<p>Another approach to using varifold representations of surfaces for machine learning is to learn a set of test functions $\{\omega_i\}_{i=1}^m\subseteq C_1(\R^3\times S^2,\R)$ and consider the evaluation of the functions by the varifolds associated with the data.</p>
+	<p>Another approach to using varifold representations of surfaces for machine learning is to learn a set of test functions $\{\omega_i\}_{i=1}^m\subseteq C_1(\R^3\times S^2,\R)$ and consider the evaluation of the functions by the varifolds associated with the data.</p><br><br>
 	<div class="col-md-7" markdown="1" align="left">		
 	<p>In particular, we may define a map $E:\mathcal{I} \to \mathcal{L}=\R^m$ where $$E(q)_i = \int_M \omega_i(q, n_q) \operatorname{d vol}_q.$$</p>
 	<p>We will model $\{\omega_i\}_{i=1}^m$ by a simple multilayer perceptron with 2 hidden layers from $\R^6$ to $\R^m$. </p><br><br>

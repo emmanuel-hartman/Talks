@@ -115,10 +115,16 @@
 					</div>
 				</div></div>				
 				<div class="col-md-4" markdown="1" align="left" vertical-align="center">
-					<p><b>Challenges with Geometric Data:</b></p><br>
-					<p>+ Improvements in 3D scanning technology allow for the capture of more complex geometric objects</p><br><br>
-					<p>+ Growing size of geometric datasets</p><br>
-					<p>+ Geometric data includes variability which does not change the shape of the data (i.e sampling and reparameterization)</p>
+					  <div>
+						<p><strong>Challenges with Geometric Data:</strong></p>
+						<ul>
+						<li><p>Advances have led to the acquisition of more complex and detailed data.</p></li>
+						<li><p>This has also increased the availability of larger datasets.</p></li>
+						<li><p>Samples are high-dimensional, and multiple samples in a dataset may have different dimensions.</p></li>
+						<li><p>Geometric data includes variability that does not change the shape of the data (e.g., sampling and reparameterization).</p></li>
+						</ul>
+						</p>
+					</div>
 				</div>
 				</textarea>
 				</section>
@@ -130,7 +136,7 @@
 				<div class="col-md-7" markdown="1" align="left" vertical-align="center"><p>
 					<b>Parameterized Objects :</b> bi-Lipschitz regular embedding from $M$ to $\R^3$ <br>$$\mathcal{I} := \operatorname{Emb}_{\text{Lip}}(M,\R^3)$$<br>
 					<b>Reparameterization Group :</b> a bi-Lipschitz homeomorphism of $M$ <br>$$\mathcal{D} := \operatorname{Diff}_{\text{Lip}}(M)$$<br>
-					<b>Shape Space:</b> We consider the space of shape as the quotient space of equivalence classes. <br>$$\mathcal{S} := \mathcal{I}/\mathcal{D}$$<br>$$[q]=\{q \circ \gamma: \ \gamma \in \mathcal{D}\}$$</p></div>
+					<b>Shape Space:</b> We consider the space of shape as the quotient space of equivalence classes. <br>$$\mathcal{S} := \mathcal{I}/\mathcal{D}$$ $$[q]=\{q \circ \gamma: \ \gamma \in \mathcal{D}\}$$<br><br></p><div class="fragment" data-fragment-index="2"><p>How can we represent geometric data in a parameterization invariant way?  </p></div></div>
 				<div class="col-md-5" markdown="1" align="left" vertical-align="center"><br><img src="figs/shape_space.png" width="100%" /></div>
 				</textarea>
 				</section>
@@ -151,10 +157,10 @@
 
 				<section data-markdown>
 				<textarea data-template>
-				<h4 align="left"> Existence of Regression Functions and Separators</h4><hr>
+				<h4 align="left"> A Support Vector Machine Approach on the space of Varifolds</h4><hr>
 				<div class="col-md-6" markdown="1" align="left" vertical-align="center">
-				<p>We leverage duality with the space of test functions to approximate linear functions on the space of varifolds. <br> This allows us to approximate functions on sets of shapes by linear functions on the space of varifolds.<br><br><br><br><br><br><br><br><br>
-				<div class="fragment" data-fragment-index="3"><p>Similarly, we can use linear functions to separate disjoint convex sets of varifolds in the TV norm.</p></div> <br><br></p>
+				<p>Support vector machines perform linear regression in $\R^n$ by learning the optimal $w\in \R^n,\beta\in \R$ so that $$f(v) \approx v\cdot w+\beta.$$ The SVarM model mirrors this approach by replacing vector inner products by the duality bracket and finding the optimal $h \in C_0(\mathbb{R}^3 \times S^2, \mathbb{R}), \beta \in \mathbb{R}$ so that $$f(\mu)\approx \langle\mu,h\rangle+\beta.$$
+				<div class="fragment" data-fragment-index="3"><p>Similarly, we can use the duality bracket to separate sets of varifolds analogously to linear seperators in the SVM approach.</p></div> <br><br></p>
 				<div class="fragment" data-fragment-index="7"> <p>This condition does not have a clear interpretation in the space of shapes.</p></div>
 				</div>
 				<div class="col-md-6" markdown="1" align="left" vertical-align="center">
@@ -188,7 +194,7 @@
 				<div class="col-md-7" markdown="1" align="left" vertical-align="center">
 				<div class="fragment" data-fragment-index="2">
 				<div class="b" align="left"><div class="bbody" align="left"><b>Theorem 3 (A Condition for Seperators Between Sets of Shapess).</b> 
-				Let $\Sigma_1, \Sigma_2$ be finite sets of continuous shapes in $\mathcal{S}$ such that either: <br>
+				Let $\Sigma_1, \Sigma_2$ be finite sets of continuous shapes in $\mathcal{I}$ such that either: <br>
 				1) for each $q' \in \Sigma_2$, $q'(M)\not\subseteq \bigcup_{q\in \Sigma_1} q(M)$<br>
 				2) for each $q \in \Sigma_1$, $q(M)\not\subseteq \bigcup_{q'\in \Sigma_2} q'(M)$.<br> 
 				Then the two sets $\Sigma_1, \Sigma_2$ are strictly separable by a test function $h \in C_0(\R^3\times S^2,\R)$. 
@@ -208,9 +214,9 @@
 				<section data-markdown>
 				<textarea data-template>
 				<h4 align="left"> Neural Network Model</h4><hr>
-				<div class="col-md-12" markdown="1" align="left" vertical-align="center"><p>Given a function $f$ on a set of shapes, how can we approximate a test funtion $h\in C_0(\R^3\times S^2,\R)$ so that the associated linear function on the space of varifolds approximates $f$?</p><br><br></div>
+				<div class="col-md-12" markdown="1" align="left" vertical-align="center"><p>Given a function $f$ on a set of shapes, how can we learn a test funtion $h\in C_0(\R^3\times S^2,\R)$ and bias $\beta\in\R$ so that $$f(q)\approx\langle\mu_q,h\rangle+\beta?$$</p><br><br></div>
 				<div class="col-md-6" markdown="1" align="left" vertical-align="center"><div class="fragment" data-fragment-index="2"><p>To learn a linear function in the space of varifolds, we approximate a test function using an MLP,<br> $h_\theta:\R^{6}\to\R$ with trainable parameters $\theta$.<br><br>
-				To perform multi-class classification of varifolds, we modify the architecture to learn a vector valued functions $h_\theta:\R^6\to \R^c$ where $\int_{\R^3\times S^2} h \operatorname{d}\mu$ is a $c$-dimensional vector where each entry is interpreted as a logit of the probability that $\mu$ belongs to the corresponding class.</p></div></div>
+				To perform multi-class classification of varifolds, we modify the architecture to learn a vector valued functions $h_\theta:\R^6\to \R^c$ where $\int_{\R^3\times S^2} h_\theta \operatorname{d}\mu$ is a $c$-dimensional vector where each entry is interpreted as a logit of the probability that $\mu$ belongs to the corresponding class.</p></div></div>
 				<div class="col-md-6" markdown="1" align="center" vertical-align="center"><div class="fragment" data-fragment-index="3"><p><img src="figs/NeuralNetworkModel.png" width="100%" /></p></div></div>
 				</textarea>
 				</section>
@@ -284,14 +290,14 @@
 				<textarea data-template>
 				<h4 align="left">Towards Nonlinear Regressors and Classifiers</h4><hr>
 				<div class="col-md-12" markdown="1" align="left" vertical-align="center">
-				<div class="b" align="left"><div class="bbody" align="left"><b>Theorem 4 (Existence of Non-Linear Approximators).</b> Let $\sigma: \R \rightarrow \R$ be a continuous non-polynomial function, $C$ a weak-* compact subset of $\mathcal{V}$ and $\psi:C \rightarrow \R$ a weak-* continuous function on $C$. Then for any $\varepsilon >0$, there exist $r \in \mathbb{N}$, $(h_k)_{k=1,\ldots,r}$ in $C_0(\R^3 \times S^2)$, $(\beta_k) \in \R^r$ and $(c_k) \in \R^{r}$ such that for all $\mu \in C$: 
+				<div class="b" align="left"><div class="bbody" align="left"><b>Theorem 4 (Existence of Non-Linear Approximators).</b> Let $\sigma: \R \rightarrow \R$ be a continuous non-polynomial function, $C$ a weak-* compact subset of $\mathcal{V}$ and $\psi:C \rightarrow \R$ a weak-* continuous function on $C$. Then for any $\varepsilon >0$, there exist $r \in \mathbb{N}$, $(h_k)_{k=1,\ldots,r}$ in $C_0(\R^3 \times S^2,\R)$, $(\beta_k) \in \R^r$ and $(c_k) \in \R^{r}$ such that for all $\mu \in C$: 
 				\begin{equation*}
 				\left|\psi(\mu) - \sum_{k=1}^{r} c_k \sigma(\langle \mu, h_k \rangle + \beta_k) \right| \leq \varepsilon
 				\end{equation*}
 				</div></div></div>	
 							
 				<div class="col-md-8" markdown="1" align="left" vertical-align="center">
-					<div class="fragment" data-fragment-index="3"><p><br><br>Define $h,\beta$ so that $\langle \mu,h \rangle+\beta$ corresponds to the number of balls on the upper half of the object and $\sigma(x)= 2^{-|x-1|^2}$, then $\sigma(\langle \mu,h \rangle+\beta)=1$ for the green surfaces while $\sigma(\langle \mu,h \rangle+\beta)=1/2$ for the red ones.</p></div>
+					<div class="fragment" data-fragment-index="3"><p><br><br>Define $h,\beta$ so that $\langle \mu,h \rangle+\beta$ corresponds to the number of balls on the upper half of the object and $\sigma(x)= 2^{-|x-1|^2}$, then $\sigma(\langle \mu,h \rangle+\beta)=1$ for the green surfaces while $\sigma(\langle \mu,h \rangle+\beta)=1/2$ for the red surfaces.</p></div>
 				</div>
 				<div class="col-md-4" markdown="1" align="left" vertical-align="center"><br>
 					<div class="fragment" data-fragment-index="2"><img src="figs/counterexample_fig2.png" width="100%" /></div>
@@ -309,14 +315,14 @@
 						We propose a framework that leverages varifold representations of geometric data and their duality with $C_0(\R^3\times S^2,\R)$.<br><br>
 						By approximating such functions with a standard MLP architechture, we may learn linear functions and separators akin to support vector machines in the infinite dimensional space of varifolds.<br><br></p><div class="row">
 						<div class="col-md-8" markdown="1" align="left">
-							<p class="fragment fade-left">+ Performing expeirements with the framework for approximating non-linear functions and classification as described in the previous slide.<br><br> </p><br>
+							<p class="fragment fade-left">+ Performing experiments with the framework for approximating non-linear functions and classification as described in the previous slide.<br><br> </p><br>
 							<p class="fragment fade-left">+ Utilizing this model for latent space representations of shape data where interpolations correspond to smooth deformations of shapes.<br><br> </p><br>
 							<p class="fragment fade-left">+ Applications to large and complex datasets where standard methods are restrictive.  </p><br>
 							<hr>
 							<p>
 							This talk is based on:<br><a href="https://arxiv.org/abs/2506.01189">https://arxiv.org/abs/2506.01189</a><br> 
 							The code for a Pytorch implementation SVarM model is available at:<br> <a href="https://github.com/SVarM25/SVarM">https://github.com/SVarM25/SVarM</a><br>
-							These slides are available at:<br><a href="https://emmanuel-hartman.github.io/Talks/Slides/SVarM/talk.html">https://emmanuel-hartman.github.io/Talks/Slides/SVarM/talk.html</a>
+							These slides are available at:<br><a href="https://emmanuel-hartman.github.io/Talks/Slides/SVarM/talk.html.">https://emmanuel-hartman.github.io/Talks/Slides/SVarM/talk.html</a>
 						</p>
 						</div>
 

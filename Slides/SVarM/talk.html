@@ -82,17 +82,30 @@
 
 				<section data-markdown>
   				<textarea data-template>
-					<h4>SVarM: Linear Support Varifold Machines for Classification<br> and Regression on Geometric Data</h4><hr>
-					<p>
-					<b>Emmanuel Hartman</b> Nicolas Charon <br>
-					<br>University of Houston<br></p><hr><p>
+					<h4>SVarM: Linear Support Varifold Machines for Classification<br> and Regression on Geometric Data</h4>
+					<hr>	
+					<div class="row" style="margin-top: 100px;">						
+					<div class="col-md-4" align="left" markdown="1">
+					</div>								
+					<div class="col-md-4" align="center" markdown="1">
+						<p><b>Emmanuel Hartman</b> and Nicolas Charon<br>
+						University of Houston<br></p><hr><p>
 				    Cambridge Image Analysis Seminar<br>
-					17 September 2025
-					</p>
-					<div class="row">
-						<div class="col-md-6" align="left" markdown="1">
-							<img src="figs/nsf.png" width="20%" />
-						</div>
+					17 September 2025</p>
+					</div>											
+					<div class="col-md-4" align="left" markdown="1">
+					</div>				
+					</div>
+					<div class="row" style="margin-top: 100px;">					
+					<div class="col-md-4" align="left" markdown="1">
+						<img src="figs/nsf.png" height="120px" />
+					</div>
+					<div class="col-md-4" align="center" markdown="1">
+						<img src="figs/cialogo_green_rounded_rectangle_website.png" height="120px" />
+					</div>
+					<div class="col-md-4" align="right" markdown="1">
+						<img src="figs/uh_red.png" height="120px" />
+					</div>
 					</div>
 	  			</textarea>
 				</section>
@@ -158,56 +171,63 @@
 				<section data-markdown>
 				<textarea data-template>
 				<h4 align="left"> A Support Vector Machine Approach on the space of Varifolds</h4><hr>
+				<div class="row">
 				<div class="col-md-6" markdown="1" align="left" vertical-align="center">
-				<p>Support vector machines perform linear regression in $\R^n$ by learning the optimal $w\in \R^n,\beta\in \R$ so that $$f(v) \approx v\cdot w+\beta.$$ The SVarM model mirrors this approach by replacing vector inner products by the duality bracket and finding the optimal $h \in C_0(\mathbb{R}^3 \times S^2, \mathbb{R}), \beta \in \mathbb{R}$ so that $$f(\mu)\approx \langle\mu,h\rangle+\beta.$$
-				<div class="fragment" data-fragment-index="3"><p>Similarly, we can use the duality bracket to separate sets of varifolds analogously to linear seperators in the SVM approach.</p></div> <br><br></p>
-				<div class="fragment" data-fragment-index="7"> <p>This condition does not have a clear interpretation in the space of shapes.</p></div>
+				<p>Support vector machines perform linear regression in $\R^n$ by learning the optimal $w\in \R^n,\beta\in \R$ so that $$f(v) \approx v\cdot w+\beta.$$</p>
+				</div><div class="col-md-6" markdown="1" align="left" vertical-align="center">
+				<p>The SVarM model mirrors this approach by replacing vector inner products by the duality bracket and finding the optimal $h \in C_0(\mathbb{R}^3 \times S^2, \mathbb{R}), \beta \in \mathbb{R}$ so that $$f(\mu)\approx \langle\mu,h\rangle+\beta.$$</p>
+				</div> 
 				</div>
-				<div class="col-md-6" markdown="1" align="left" vertical-align="center">
-				<div class="fragment" data-fragment-index="2">
-				<div class="b" align="left">
-				<div class="bbody" align="left">
-				<b>Theorem 1 (Existence of Linear Approximators).</b> Suppose $\varphi:\mathcal{V} \to \R$ is an affine function and continuous with respect to the TV norm topology and fix $C\subseteq \mathcal{V}$ any finite subset of the space of varifolds. For all $\epsilon>0$, there exists $h\in C_0(\R^3\times S^2,\R)$ and $\beta \in \R$ such that 
-			$$\sup_{\mu\in C}\left|\varphi(\mu) - (\langle \mu, h\rangle + \beta)\right|<\epsilon.$$
+				<div class="row">
+					<div class="col-md-6" markdown="1" align="left" vertical-align="center">
+					<div class="fragment" data-fragment-index="3"><p>Similarly, we can use the duality bracket to separate sets of varifolds analogously to linear seperators in the SVM approach.</p></div>
+					<div class="fragment" data-fragment-index="5" align="center"><br><img src="figs/separator.png" width="60%" /></div>
 				</div>
-				</div>
-				</div>
-				<br>
+					<div class="col-md-6" markdown="1" align="left" vertical-align="center">
 				<div class="fragment" data-fragment-index="4"><div class="b" align="left"><div class="bbody" align="left"><b>Definition 1 (Separation).</b> Two disjoint sets $C_1,C_2 \subseteq \mathcal{V}$ are strictly separated by some test function $h$ when:
 				\begin{equation}
 				\label{eq:def_separated}
 				\sup_{\mu\in C_1} \langle \mu,h\rangle \,<\, \inf_{\nu\in C_2} \langle \nu,h\rangle
 				\end{equation}
-				</div></div></div>
-				<br>
-				<div class="fragment" data-fragment-index="6"><div class="b" align="left"><div class="bbody" align="left"><b>Theorem 2 (Seperators Between Disjoint Convex Sets).</b> Suppose $C_1, C_2 \subseteq \mathcal{V}$ are convex weak-* compact subsets such that $C_1\cap C_2 = \emptyset$.
-				Then there exists a test function $h\in C_0(\R^3\times S^2,\R)$ that separates $C_1$ and $C_2$ in the sense of Definition 1. 
-				</div></div></div>
-				</div>
+				</div></div></div></div>
+				</div></div>
 				</textarea>
 				</section>
 
 
 				<section data-markdown>
 				<textarea data-template>
-				<h4 align="left"> Existence of Separators Contd. and a counter example</h4><hr>
-				<div class="col-md-7" markdown="1" align="left" vertical-align="center">
-				<div class="fragment" data-fragment-index="2">
-				<div class="b" align="left"><div class="bbody" align="left"><b>Theorem 3 (A Condition for Seperators Between Sets of Shapess).</b> 
+				<h4 align="left"> Existence of Separators and a counter example</h4><hr>
+				<div class="row">
+				<div class="col-md-8" markdown="1" align="left" vertical-align="center">
+					<div class="fragment" data-fragment-index="1"><div class="b" align="left"><div class="bbody" align="left"><b>Theorem 2 (Seperators Between Disjoint Convex Sets).</b> Suppose $C_1, C_2 \subseteq \mathcal{V}$ are convex weak-* compact subsets such that $C_1\cap C_2 = \emptyset$.
+					Then there exists a test function $h\in C_0(\R^3\times S^2,\R)$ that separates $C_1$ and $C_2$ in the sense of Definition 1. 
+					</div></div></div>
+				</div>
+				<div class="col-md-4" markdown="1" align="left" vertical-align="center">
+					<div class="fragment" data-fragment-index="2"> <p>This condition does not have a clear interpretation in the space of shapes.</p></div>
+				</div>
+				</div>	
+				<br>			
+				<div class="row">				
+				<div class="col-md-8" markdown="1" align="left" vertical-align="center">
+				<div class="fragment" data-fragment-index="3">
+				<div class="b" align="left"><div class="bbody" align="left"><b>Theorem 3 (A Condition for Seperators Between Sets of Shapes).</b> 
 				Let $\Sigma_1, \Sigma_2$ be finite sets of continuous shapes in $\mathcal{I}$ such that either: <br>
 				1) for each $q' \in \Sigma_2$, $q'(M)\not\subseteq \bigcup_{q\in \Sigma_1} q(M)$<br>
 				2) for each $q \in \Sigma_1$, $q(M)\not\subseteq \bigcup_{q'\in \Sigma_2} q'(M)$.<br> 
 				Then the two sets $\Sigma_1, \Sigma_2$ are strictly separable by a test function $h \in C_0(\R^3\times S^2,\R)$. 
 				</div></div></div>
-				<div class="fragment" data-fragment-index="2">
+				<div class="fragment" data-fragment-index="4">
 				<p><br><br>When this condition is not met there are examples of sets of shapes which cannot be separated by a test function $h\in C_0(\R^3\times S^2,\R)$.</p>
 				</div>
 				</div>		
-				<div class="fragment" data-fragment-index="2">		
-				<div class="col-md-5" markdown="1" align="left" vertical-align="center">
+				<div class="fragment" data-fragment-index="5">		
+				<div class="col-md-4" markdown="1" align="left" vertical-align="center">
 					<img src="figs/counterexample_fig2.png" width="100%" />
 				</div>
 				</div>
+				</div>				
 				</textarea>
 				</section>
 
@@ -310,9 +330,9 @@
 				<section data-markdown>
 					<textarea data-template>
 						<h4 align="left">Conclusion And Future Work</h4><hr>
-						<p align="left"><br><br>
-						We discuss learning methods for parameterization invariant functions of geometric data such as surfaces, curves, and shape graphs.<br><br>
-						We propose a framework that leverages varifold representations of geometric data and their duality with $C_0(\R^3\times S^2,\R)$.<br><br>
+						<p align="left"><br>
+						We discuss learning methods for parameterization invariant functions of geometric data such as surfaces, curves, and shape graphs.<br>
+						We propose a framework that leverages varifold representations of geometric data and their duality with $C_0(\R^3\times S^2,\R)$.<br>
 						By approximating such functions with a standard MLP architechture, we may learn linear functions and separators akin to support vector machines in the infinite dimensional space of varifolds.<br><br></p><div class="row">
 						<div class="col-md-8" markdown="1" align="left">
 							<p class="fragment fade-left">+ Performing experiments with the framework for approximating non-linear functions and classification as described in the previous slide.<br><br> </p><br>

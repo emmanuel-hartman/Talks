@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>SVarM: regression and classification in the space of varifold representations of geometric data</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- Reveal.js & Styles -->
+		<link rel="stylesheet" href="../../revealjs/dist/reset.css">
+		<link rel="stylesheet" href="../../revealjs/dist/reveal.css">
+		<link rel="stylesheet" href="../../revealjs/dist/theme/H2_Talk.css" id="theme">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../../revealjs/plugin/highlight/monokai.css">
+
+		<!-- Three.js and PLY Loader -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/loaders/PLYLoader.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/controls/OrbitControls.js"></script>
+
+		<meta name="description" content="SVarM.">
+		<meta name="author" content="Emmanuel Hartman">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../../revealjs/plugin/highlight/monokai.css">
+		<style>
+    .reveal section p {
+    display: inline-block;
+    font-size: 0.5em;
+    line-height: 1.2em;
+    text-align: left;
+    vertical-align: top;
+		margin: 0;            /* remove paragraph margins */
+		padding: 0;
+		margin-bottom: .2em
+	  }
+
+		sub {
+    	font-size: 0.2em;
+		}
+		div.title {			
+		vertical-align: center;
+		display: inline-block;
+		  border-radius: 10px;
+		  width: 100%;
+		  border: 1px solid #000000;
+		  background-color: rgba(133, 167, 255, 0.8);
+		  padding: 0px 10px 2px 10px;
+		}
+
+		div.btitle {
+		  width: 100%;
+	    	  font-size: 0.6em;
+		  background-color: #7878ff;
+		  border-radius: 5px;
+		  padding: 0px 10px 2px 10px;
+		}
+		div.b {
+		width: 100%;
+		background-color: #cccccc;
+		border-radius: 10px;
+		padding: 0px 10px 0px 0px;
+		font-size: 0.5em;
+		line-height: 1.2em;
+		}
+		div.bbody {
+		  width: 100%;
+		  background-color: #cccccc;
+		  border-radius: 10px;
+		  padding: 0px 10px 10px 10px;
+		}
+		table, tbody, tr, th, td{
+		    background-color: rgba(0, 0, 0, 0.0) !important;
+		}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+				$\renewcommand{\Diff}{\mathcal{D}}\newcommand{\dist}{\mathrm{dist}}\renewcommand{\Imm}{\mathcal{I}}\newcommand{\Shape}{\mathcal{S}}\newcommand{\R}{\mathbb{R}}\newcommand{\vol}{\operatorname{vol}}\newcommand{\Vol}{\mathrm{Vol}}\newcommand{\Var}{V}$
+
+				<section data-markdown>
+  				<textarea data-template>
+					<h4>SVarM: regression and classification <br> in the space of varifold representations of geometric data</h4>
+					<hr>	
+					<div class="row" style="margin-top: 100px;">						
+					<div class="col-md-2" align="left" markdown="1">
+					</div>								
+					<div class="col-md-8" align="center" markdown="1">
+						<p><b>Emmanuel Hartman</b>,  Murad Hossen,  and Nicolas Charon<br>
+						University of Houston<br></p><hr><p>Curves and Surfaces 2026<br>12 June 2026</p>
+					</div>											
+					<div class="col-md-2" align="left" markdown="1">
+					</div>				
+					</div>
+					<div class="row" style="margin-top: 100px;">					
+					<div class="col-md-4" align="left" markdown="1">
+						<img src="figs/nsf.png" height="120px" />
+					</div>
+					<div class="col-md-4" align="center" markdown="1">
+					</div>
+					<div class="col-md-4" align="right" markdown="1">
+						<img src="figs/uh_red.png" height="120px" />
+					</div>
+					</div>
+	  			</textarea>
+				</section>
+
+				<section data-markdown>
+				<textarea data-template>
+				<h4 align="left">Shape Data</h4><hr>
+				<div class="col-md-4" markdown="1" align="center" vertical-align="center">
+						<iframe
+							src="skull.html"
+							width="100%"
+							height="200px"
+							style="border:none;">
+						</iframe>
+						<iframe
+							src="titan.html"
+							width="100%"
+							height="150px"
+							style="border:none;">
+						</iframe>
+					<img src="figs/humans.png" width="100%" />
+					<p>n > 40,000 , 10 identities</p>
+				</div>
+				<div class="col-md-4" markdown="1" align="left" vertical-align="center">
+						<img src="figs/hearts_results.png" width="100%" /><br>
+						<iframe
+							src="LAA_sbs2.html"
+							width="100%"
+							height="150px"
+							style="border:none;">
+						</iframe>
+						<div class="row">
+							<div class="col-md-6" markdown="1" align="left" vertical-align="center"><p>Vertices: 1430 <br> Faces: 2865</p></div>
+							<div class="col-md-6" markdown="1" align="left" vertical-align="center"><p>Vertices: 10252 <br> Faces: 20532</p></div>
+						</div>
+						<iframe
+							src="LAA_sbs.html"
+							width="100%"
+							height="150px"
+							style="border:none;">
+						</iframe>
+						<div class="row">
+							<div class="col-md-6" markdown="1" align="left" vertical-align="center"><p>Vertices: 1430 <br> Faces: 2865</p></div>
+							<div class="col-md-6" markdown="1" align="left" vertical-align="center"><p>Vertices: 7720 <br> Faces: 15448</p></div>
+						</div>
+				</div>
+				<div class="col-md-4" markdown="1" align="left" vertical-align="center">
+					  <div>
+						<p><strong>Challenges with Geometric Data:</strong></p>
+						<ul>
+						<li><p>Advances have led to the acquisition of more complex and detailed data.</p></li>
+						<li><p>This has also increased the availability of larger datasets.</p></li>
+						<li><p>Samples are high-dimensional, and multiple samples in a dataset may have different dimensions.</p></li>
+						<li><p>Geometric data includes variability that does not change the shape of the data (e.g., sampling and reparameterization).</p></li>
+						</ul>
+						</p>
+					</div>
+				</div>
+				</textarea>
+				</section>
+
+				<section data-markdown>
+				<textarea data-template>
+				<h4 align="left">Shape Space and Parameterization Invariant Learning</h4><hr>
+
+				<div class="col-md-12" markdown="1" align="left" vertical-align="center"><p>Let $M$ be a smooth oriented Riemannian 2-manifold.<br><br></p></div>
+				<div class="col-md-7" markdown="1" align="left" vertical-align="center"><p>
+					<b>Parameterized Objects :</b> bi-Lipschitz regular embedding from $M$ to $\R^3$ <br>$$\mathcal{I} := \operatorname{Emb}_{\text{Lip}}(M,\R^3)$$<br>
+					<b>Reparameterization Group :</b> a bi-Lipschitz homeomorphism of $M$ <br>$$\mathcal{D} := \operatorname{Diff}_{\text{Lip}}(M)$$<br>
+					<b>Shape Space:</b> We consider the space of shape as the quotient space of equivalence classes. <br>$$\mathcal{S} := \mathcal{I}/\mathcal{D}$$ $$[q]=\{q \circ \gamma: \ \gamma \in \mathcal{D}\}$$<br><br></p><div class="fragment" data-fragment-index="2"><p>How can we represent geometric data in a parameterization invariant way?  </p></div></div>
+				<div class="col-md-5" markdown="1" align="left" vertical-align="center"><br><img src="figs/shape_space.png" width="100%" /></div>
+				</textarea>
+				</section>
+
+				<section data-markdown>
+				<textarea data-template>
+				<h4 align="left">Varifold Representations of Geometric Data$^{1,2,3,4}$</h4><hr>
+				<div class="row">
+				<div class="col-md-6" markdown="1" align="left" vertical-align="center"><p>   We consider the space of varifolds, $\mathcal{V}$, given by the positive Radon measure on $\R^3 \times S^2$ where $S^2$ denotes the unit sphere.<br><br>
+				Any $q\in \mathcal{I}$ can be canonically mapped to a varifold given by the pushforward measure $\mu_q : =(q,v_q)_*\vol_q \in \mathcal{V}$ where $v_q$ denotes the unit normal vector field and $\vol_q$ is the induced area measure on $M$.</p><br>
+				<div class="fragment" data-fragment-index="1"><div class="b" align="left"><div class="bbody" align="left"><b>Theorem 1.</b> For any $q\in \mathcal{I}$ and $\gamma\in\mathcal{D}$, it holds that $ \mu_{q\circ\gamma}=\mu_q$.
+				Consequently, one obtains a well-defined map $[q] \in \mathcal{S} \mapsto \mu_q \in \mathcal{V}$ which, in addition, is injective.
+				</div></div></div>
+				<div class="fragment" data-fragment-index="2"><p>By the Riesz-Markov-Kakutani representation theorem, $\mathcal{V}$ is the dual of $C_0(\R^3\times S^2,\R)$. The duality bracket between $\mathcal{V}$ and $C_0(\R^3 \times S^2,\R)$ is given by $$\langle \mu , h\rangle = \int_{\R^3 \times S^2} h(x,v) d\mu(x,v).$$
+				</p></div></div>
+				<div class="col-md-6" markdown="1" align="center" vertical-align="center"><img src="figs/varifold_representations2.png" width="50%" /><br><p>$$\mu_q = \sum_{i=1}^ma_i \delta_{(c_i,n_i)}$$</p><br><img src="figs/varifold_representations.png" width="100%" /></div>
+				<p align="left"><sub>$^1$Charon & Trouvé. "The varifold representation of nonoriented shapes for diffeomorphic registration."</sub><br>
+				<sub>$^2$Kaltenmark, et al. "A general framework for curve and surface comparison and registration with oriented varifolds."</sub><br>
+				<sub>$^3$Feydy et al. "Optimal transport for diffeomorphic registration"</sub><br>
+				<sub>$^4$ Roussillon & Glaunès. "Representation of surfaces with normal cycles and application to surface registration."</sub><br></p>
+				</div>
+				</textarea>
+				</section>
+
+				<section data-markdown>
+				<textarea data-template>
+				<h4 align="left"> A Support Vector Machine Approach on the space of Varifolds</h4><hr>
+				<div class="row" align="left">
+					<br>
+				<div class="col-md-6" markdown="1" align="left" vertical-align="center">
+					<p> Support vector machines (SVMs) perform linear regression in $\R^n$ by learning the optimal $w\in \R^n,\beta\in \R$ so that $$f(v) \approx v\cdot w+\beta.$$</p>
+					<p> SVMs perform linear classification by learning the optimal $w\in \R^n,\beta\in \R$ such that the hyperplane given by $$\{v\in \R^n\,|\, v\cdot w = \beta \}$$ separates subsets of $\R^n$.</p><br><br>
+					<div class="b" align="left"><div class="bbody" align="left"><b>Definition.</b> Two disjoint sets $C_1,C_2 \subseteq \R^n$ are strictly separated by a hyperplane defined by  $w\in \R^n,\beta\in \R$ when:
+					\begin{equation}
+					\sup_{v\in C_1} v\cdot w \,< \beta < \, \inf_{u\in C_2} u\cdot w
+					\end{equation}
+					</div></div>
+				</div>
+				<div class="col-md-6" markdown="1" align="center" vertical-align="center">
+					<br><img src="figs/SVM.png" width="50%" />
+				</div>
+				</div>
+				</textarea>
+				</section>
+
+
+				<section data-markdown>
+				<textarea data-template>
+				<h4 align="left"> A Support Vector Machine Approach on the space of Varifolds</h4><hr>
+				<div class="row" align="left">
+					<p>The <b>S</b>upport <b>Var</b>ifold <b>M</b>achine (SVarM) model mirrors the approach of SVMs replacing vector inner products by the duality bracket.
+				<div class="col-md-6" markdown="1" align="left" vertical-align="center">
+					<p> Support vector machines (SVMs) perform linear regression in $\R^n$ by learning the optimal $w\in \R^n,\beta\in \R$ so that $$f(v) \approx v\cdot w+\beta.$$</p>
+					<p> SVMs perform linear classification by learning the optimal $w\in \R^n,\beta\in \R$ such that the hyperplane given by $$\{v\in \R^n\,|\, v\cdot w = \beta \}$$ separates subsets of $\R^n$.<br><br></p>
+					<div class="b" align="left"><div class="bbody" align="left"><b>Definition.</b> Two disjoint sets $C_1,C_2 \subseteq \R^n$ are strictly separated by a hyperplane defined by  $w\in \R^n,\beta\in \R$ when:
+					\begin{equation}
+					\sup_{v\in C_1} v\cdot w \,< \beta < \, \inf_{u\in C_2} u\cdot w
+					\end{equation}
+					</div></div>
+				</div>
+				<div class="col-md-6" markdown="1" align="left" vertical-align="center">
+					<p> Linear regression is performed by finding the optimal $h \in C_0(\mathbb{R}^3 \times S^2, \mathbb{R}), \beta \in \mathbb{R}$ so that $$f(\mu)\approx \langle\mu,h\rangle+\beta.$$</p>
+					<br>
+					<p> Linear classification is performed by learning $h \in C_0(\mathbb{R}^3 \times S^2, \mathbb{R})$ ,$\beta \in \mathbb{R}$ which define a codimension 1 subspace of $\mathcal{V}$ given by $$\{\mu\in \mathcal{V}\,|\,\langle \mu,h\rangle = \beta \}$$ that separate sets of varifolds.   </p>
+					<div class="b" align="left"><div class="bbody" align="left"><b>Definition.</b> Two disjoint sets $C_1,C_2 \subseteq \mathcal{V}$ are strictly separated by some test function $h$ when:
+					\begin{equation}
+					\sup_{\mu\in C_1} \langle \mu,h\rangle \,<\, \inf_{\nu\in C_2} \langle \nu,h\rangle
+					\end{equation}
+					</div></div>
+				</div>
+				</div>
+				</textarea>
+				</section>
+
+
+				<section data-markdown>
+				<textarea data-template>
+				<h4 align="left"> A Support Vector Machine Approach on the space of Varifolds</h4><hr>
+				<div class="row" align="left">
+					<p>The <b>S</b>upport <b>Var</b>ifold <b>M</b>achine (SVarM) model mirrors the approach of SVMs replacing vector inner products by the duality bracket.
+
+				<div class="col-md-6" markdown="1" align="left" vertical-align="center">
+					<p> Linear regression is performed by finding the optimal $h \in C_0(\mathbb{R}^3 \times S^2, \mathbb{R}), \beta \in \mathbb{R}$ so that $$f(\mu)\approx \langle\mu,h\rangle+\beta.$$</p>
+					<br>
+					<p> Linear classification is performed by learning $h \in C_0(\mathbb{R}^3 \times S^2, \mathbb{R})$ ,$\beta \in \mathbb{R}$ which define a codimension 1 subspace of $\mathcal{V}$ given by $$\{\mu\in \mathcal{V}\,|\,\langle \mu,h\rangle = \beta \}$$ that separate sets of varifolds.   </p>
+					<div class="b" align="left"><div class="bbody" align="left"><b>Definition.</b> Two disjoint sets $C_1,C_2 \subseteq \mathcal{V}$ are strictly separated by some test function $h$ when:
+					\begin{equation}
+					\sup_{\mu\in C_1} \langle \mu,h\rangle \,<\, \inf_{\nu\in C_2} \langle \nu,h\rangle
+					\end{equation}
+					</div></div>
+				</div>
+				<div class="col-md-6" markdown="1" align="center" vertical-align="center">
+					<br><img src="figs/separator.png" width="70%" />
+				</div>
+				</div>
+				</textarea>
+				</section>
+
+				<section data-markdown>
+				<textarea data-template>
+				<h4 align="left"> Existence of Separators and a counter example</h4><hr>
+				<br>
+				<div class="row">
+				<div class="col-md-8" markdown="1" align="left" vertical-align="center">
+				<div class="fragment" data-fragment-index="3">
+				<div class="b" align="left"><div class="bbody" align="left"><b>Theorem 2 (A Condition for Seperators Between Sets of Shapes).</b>
+				Let $\Sigma_1, \Sigma_2$ be finite sets of continuous shapes in $\mathcal{I}$ such that either: <br>
+				1) for each $q' \in \Sigma_2$, $q'(M)\not\subseteq \bigcup_{q\in \Sigma_1} q(M)$<br>
+				2) for each $q \in \Sigma_1$, $q(M)\not\subseteq \bigcup_{q'\in \Sigma_2} q'(M)$.<br>
+				Then the two sets $\Sigma_1, \Sigma_2$ are strictly separable by a test function $h \in C_0(\R^3\times S^2,\R)$.
+				</div></div></div>
+				<div class="fragment" data-fragment-index="4">
+				<p><br><br>When this condition is not met there are examples of sets of shapes which cannot be separated by a test function $h\in C_0(\R^3\times S^2,\R)$.</p>
+				</div>
+				</div>
+				<div class="fragment" data-fragment-index="5">
+				<div class="col-md-4" markdown="1" align="left" vertical-align="center">
+				<iframe
+					src="inseparability.html"
+					width="300px"
+					height="300px"
+					style="border:none;">
+				</iframe>
+				</div>
+				</div>
+				</div>
+				</textarea>
+				</section>
+
+				<section data-markdown>
+				<textarea data-template>
+				<h4 align="left"> Approximating Optimal Test Functions</h4><hr>
+				<div class="col-md-12" markdown="1" align="left" vertical-align="center"><p>Given a function $f$ on a set of shapes, how can we learn a test funtion $h\in C_0(\R^3\times S^2,\R)$ and bias $\beta\in\R$ so that $$f(q)\approx\langle\mu_q,h\rangle+\beta?$$</p><br><br></div>
+				<div class="col-md-6" markdown="1" align="left" vertical-align="center"><div class="fragment" data-fragment-index="2"><p>To learn a linear function in the space of varifolds, we approximate a test function using an MLP,<br> $h_\theta:\R^{6}\to\R$ with trainable parameters $\theta$.<br><br>
+				To perform multi-class classification of varifolds, we modify the architecture to learn a vector valued functions $h_\theta:\R^6\to \R^c$ where $\int_{\R^3\times S^2} h_\theta \operatorname{d}\mu$ is a $c$-dimensional vector where each entry is interpreted as a logit of the probability that $\mu$ belongs to the corresponding class.</p></div></div>
+				<div class="col-md-6" markdown="1" align="center" vertical-align="center"><div class="fragment" data-fragment-index="3"><p><img src="figs/NeuralNetworkModel.png" width="100%" /></p></div></div>
+				</textarea>
+				</section>
+
+				<section data-markdown>
+				<textarea data-template>
+				<h4 align="left"> Regression Results</h4><hr>
+				<div class="col-md-6" markdown="1" align="left" vertical-align="center">
+					<p><b>Single-Axis Rotation Regression:</b> On ~8k synthetically rotated FAUST meshes, our model accurately predicts rotation angles around a fixed axis, realigning scans with high correlation to ground truth and interpretable face-wise function values.
+					<br><br><br><b>Full 3D Rotation Regression:</b> We extended the task to arbitrary 3D rotations (12.8k meshes with an 80 - 20 training/testing split), where the model learns to regress rotation matrices, achieving low mean geodesic error in $SO(3)$ and strong $R^2$ scores.
+					<br><br><br><b>Comparison to Optimization Baseline:</b> Our model attains superior accuracy to direct optimization over $SO(3)$. This optimization requires ~15-30s per mesh while our trained model aligns the entire test set in <15s.</p>
+				</div>
+				<div class="col-md-6" markdown="1" align="left" vertical-align="center">
+					<div class="fragment" data-fragment-index="2"><img src="figs/Regression1.png" width="100%" /></div><br>
+					<div class="fragment" data-fragment-index="3"><img src="figs/Regression2.png" width="100%" /></div>
+				</div>
+				</textarea>
+				</section>
+
+				<section data-markdown>
+				<textarea data-template>
+				<h4 align="left"> Classification Results</h4><hr>
+				<div class="col-md-6" markdown="1" align="left" vertical-align="center">
+					<div class="fragment" data-fragment-index="1"><p><b>MNIST Surfaces:</b> Converted the full MNIST dataset into 3D height-map meshes (20 minutes preprocessing). Training used ~60k meshes with digits as labels, and testing was done on ~10k meshes.
+					</p></div><br>
+					<div class="fragment" data-fragment-index="3"><p><b>Efficiency vs. Accuracy:</b> Despite having $<$2k parameters, SVarM achieves 97.7% accuracy on MNIST, outperforming models that require significantly more parameters.
+					</p></div><br>
+					<div class="fragment" data-fragment-index="4"><p><b>COMA Face Scans:</b> ~21k 3D facial scans of 12 identities, split into 80% training and 20% testing. SVarM attains 99.98% accuracy on the unseen data.
+					</p></div><br>
+					<div class="fragment" data-fragment-index="5"><p><b>Robustness to Data Loss and Remeshing:</b> We test the robustness of the model by applying data loss (missing faces) and resampling (mesh decimation) to the testing sets and report the accuracy reduction as the data loss and remeshing becomes more severe.</p></div>
+				</div>
+				<div class="col-md-6" markdown="2" align="left" vertical-align="center">
+					<div class="fragment" data-fragment-index="2"><img src="figs/MNIST_Classify.png" width="100%" /></div><br>
+					<div class="fragment" data-fragment-index="5"><img src="figs/loss_robust.png" width="40%" /><img src="figs/decimation_robust.png" width="40%" /></div>
+				</div>
+				</textarea>
+				</section>
+<!--
+				<section data-markdown>
+				<textarea data-template>
+				<h4 align="left"> Robustness Results</h4><hr>
+				<div class="col-md-8" markdown="1" align="left" vertical-align="center">
+				<div class="fragment" data-fragment-index="1"><div class="b" align="left"><div class="bbody" align="left">
+					<b>Theorem 4 (Robustness in the Space of Varifolds).</b>
+					Let $\mu,\nu\in\mathcal{V}$ and $h\in C_0(\R^3\times S^2)$ such that $h$ is Lipchitz with constant $K$. Then,
+					\begin{equation*}
+					|\langle\mu,h\rangle - \langle\nu,h\rangle|\leq\|h\|_\infty\cdot \|\mu-\nu\|_{\text{TV}}
+					\end{equation*}
+					and
+					\begin{equation*}
+						|\langle\mu,h\rangle - \langle\nu,h\rangle|\leq \left|\|\mu\|_{\text{TV}}-\|\nu\|_{\text{TV}}\right|\cdot\|h\|_\infty + \|\mu\|_{\text{TV}}\cdot K\cdot W_1\left(\frac{\mu}{m_\mu},\frac{\nu}{m_\nu}\right)
+					\end{equation*}
+					where $W_1$ denotes the 1-Wasserstein distance.
+				</div></div></div>
+				<br>
+				<div class="fragment" data-fragment-index="2"><div class="b" align="left"><div class="bbody" align="left">
+					<b>Theorem 5 (Robustness in the Space of Shapes).</b>
+					Let $h\in C_0(\R^3\times S^2)$ such that $h$ is Lipschitz with constant $K$ and $q,q'$ be bi-Lipschitz embeddings from a $d$-dimensional manifold $M$ into $\R^3$ (with either $d=1$ or $d=n-1$) such that $\|q - q'\|_{W^{1,\infty}} \leq C$. Then
+					\begin{equation}
+						|\langle\mu_{q},h\rangle - \langle\mu_{q'},h\rangle| \leq CA_q(K\sqrt{2dL^{2d-1} + 1}+d^{d+1/2}L^{2d+1}\|h\|_{\infty})
+					\end{equation}
+					where $A_q = \int_M\operatorname{d vol}_q$ is the total length/area of $q(M)$, and $L$ the maximum of the Lipschitz constants of $q$ and $q'$.
+				</div></div></div>
+				</div>
+				<div class="col-md-4" markdown="1" align="left" vertical-align="center">
+					<div class="fragment" data-fragment-index="3"><img src="figs/loss_robust.png" width="100%" /></div><br><br><br>
+					<div class="fragment" data-fragment-index="4"><img src="figs/decimation_robust.png" width="100%" /></div>
+				</div>
+				</textarea>
+				</section>
+-->
+
+				<section data-markdown>
+				<textarea data-template>
+				<h4 align="left">Towards Nonlinear Regressors and Classifiers</h4><hr>
+				<div class="col-md-12" markdown="1" align="left" vertical-align="center">
+				<div class="b" align="left"><div class="bbody" align="left"><b>Theorem 4 (Existence of Non-Linear Approximators).</b> Let $\sigma: \R \rightarrow \R$ be a continuous non-polynomial function, $C$ a weak-* compact subset of $\mathcal{V}$ and $\psi:C \rightarrow \R$ a weak-* continuous function on $C$. Then for any $\varepsilon >0$, there exist $r \in \mathbb{N}$, $(h_k)_{k=1,\ldots,r}$ in $C_0(\R^3 \times S^2,\R)$, $(\beta_k) \in \R^r$ and $(c_k) \in \R^{r}$ such that for all $\mu \in C$:
+				\begin{equation*}
+				\left|\psi(\mu) - \sum_{k=1}^{r} c_k \sigma(\langle \mu, h_k \rangle + \beta_k) \right| \leq \varepsilon
+				\end{equation*}
+				</div></div></div>
+
+				<div class="col-md-8" markdown="1" align="left" vertical-align="center">
+					<div class="fragment" data-fragment-index="3"><p><br><br>Define $h,\beta$ so that $\langle \mu,h \rangle+\beta$ corresponds to the number of balls on the upper half of the object and $\sigma(x)= 2^{-|x-1|^2}$, then $\sigma(\langle \mu,h \rangle+\beta)=1$ for the green surfaces while $\sigma(\langle \mu,h \rangle+\beta)=1/2$ for the red surfaces.</p></div>
+				</div>
+				<div class="col-md-4" markdown="1" align="left" vertical-align="center">
+				<iframe
+					src="inseparability.html"
+					width="300px"
+					height="300px"
+					style="border:none;">
+				</iframe>
+				</div>
+				</textarea>
+				</section>
+
+
+				<section data-markdown>
+				<textarea data-template>
+				<h4 align="left">Nonlinear SVarM Regression and Classification in Practice</h4><hr>
+				<div class="col-md-12" markdown="1" align="left" vertical-align="center">
+					<p>Fractal dimension of 2D or 3D curves is typically computed in practice via the box counting algorithm, based on the formula: $F = \lim\limits_{D \rightarrow 0} \frac{-\log N(D)}{\log D}$. It usually involves computing box coverings over many scales and rotation angles.<br></p>
+				</div>			
+				<div class="col-md-12" markdown="1" align="center" vertical-align="center"><img src="figs/FD_Combined.png" width="80%" /></div>			
+				<div class="col-md-12" markdown="1" align="left" vertical-align="center">
+					<p><br>We consider the <b>PneumoniaMNIST</b> dataset of 5856 chest X-ray scans from the <b>MedMNIST</b> repository (Training: 4,708 / Validation: 524 / Test: 624). The 2D images are represented as varifolds by computing their corresponding (filtered) unit gradient vector fields, which is a contrast-invariant representation.<br></p>
+				</div>				
+				<div class="col-md-3" markdown="1" align="left" vertical-align="center"><img src="figs/PneumoniaNist.png" width="90%" /></div>				
+				<div class="col-md-6" markdown="1" align="left" vertical-align="center">
+				<table style="border-collapse:collapse; font-size:0.5em; margin-top:0.5em;">
+					<thead>
+						<tr>
+							<th style="border:1px solid #000; padding:3px 6px; text-align:right;">Method</th>
+							<th style="border:1px solid #000; padding:3px 6px; text-align:center;">Accuracy</th>
+							<th style="border:1px solid #000; padding:3px 6px; text-align:center;">AUC</th>
+							<th style="border:1px solid #000; padding:3px 6px; text-align:center;">Params</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td style="border:1px solid #000; padding:3px 6px; text-align:right;">ResNet-18</td>
+							<td style="border:1px solid #000; padding:3px 6px; text-align:center;">86.4%</td>
+							<td style="border:1px solid #000; padding:3px 6px; text-align:center;">0.956</td>
+							<td style="border:1px solid #000; padding:3px 6px; text-align:center;">~11.7M</td>
+						</tr>
+						<tr>
+							<td style="border:1px solid #000; padding:3px 6px; text-align:right;">ResNet-50</td>
+							<td style="border:1px solid #000; padding:3px 6px; text-align:center;">88.4%</td>
+							<td style="border:1px solid #000; padding:3px 6px; text-align:center;">0.962</td>
+							<td style="border:1px solid #000; padding:3px 6px; text-align:center;">~25.5M</td>
+						</tr>
+						<tr>
+							<td style="border:1px solid #000; padding:3px 6px; text-align:right;">SVarM (Linear)</td>
+							<td style="border:1px solid #000; padding:3px 6px; text-align:center;">92.2%</td>
+							<td style="border:1px solid #000; padding:3px 6px; text-align:center;">0.963</td>
+							<td style="border:1px solid #000; padding:3px 6px; text-align:center;">1,300</td>
+						</tr>
+						<tr>
+							<td style="border:1px solid #000; padding:3px 6px; text-align:right;">SVarM (Non-Linear)</td>
+							<td style="border:1px solid #000; padding:3px 6px; text-align:center;">93.1%</td>
+							<td style="border:1px solid #000; padding:3px 6px; text-align:center;">0.978</td>
+							<td style="border:1px solid #000; padding:3px 6px; text-align:center;">36,962</td>
+						</tr>
+					</tbody>
+				</table>
+				</div>
+				</textarea>
+				</section>
+
+
+
+				<section data-markdown>
+					<textarea data-template>
+						<h4 align="left">Conclusion And Future Work</h4><hr>
+						<p align="left"><br>
+						We discuss learning methods for parameterization invariant functions of geometric data by approximating linear functions on the space of varifolds.<br>
+						We propose a framework that leverages varifold representations of geometric data and their duality with $C_0(\R^3\times S^2,\R)$.<br>
+						Linear functions on the space of varifolds are surprisingly good at approximating functions that you might expect to be non-linear.<br><br></p><div class="row">
+						<div class="col-md-8" markdown="1" align="left">
+							<p class="fragment fade-left">+ Performing experiments with the framework for approximating non-linear functions and classification as described in the previous slide.<br><br> </p><br>
+							<p class="fragment fade-left">+ Applications to large and complex datasets where standard methods are restrictive.  </p><br>
+							<hr>
+							<p>
+							This talk is based on:<br><a href="https://arxiv.org/abs/2506.01189">https://arxiv.org/abs/2506.01189</a><br>
+							The code for a Pytorch implementation SVarM model is available at:<br> <a href="https://github.com/SVarM25/SVarM">https://github.com/SVarM25/SVarM</a><br>
+							These slides are available at:<br><a href="https://emmanuel-hartman.github.io/Talks/Slides/SVarM_CS26/talk.html">https://emmanuel-hartman.github.io/Talks/Slides/SVarM_CS26/talk.html</a>
+						</p>
+						</div>
+
+						<div class="col-md-4" markdown="1" align="center">
+						<img src="figs/separator.png" width="100%"/>
+						<br><br>
+						<center><p>Thank you for your attention!</p></center>
+					</textarea>
+				</section>
+
+
+
+		<script src="../../revealjs/dist/reveal.js"></script>
+		<script src="../../revealjs/plugin/zoom/zoom.js"></script>
+		<script src="../../revealjs/plugin/notes/notes.js"></script>
+		<script src="../../revealjs/plugin/search/search.js"></script>
+		<script src="../../revealjs/plugin/markdown/markdown.js"></script>
+		<script src="../../revealjs/plugin/highlight/highlight.js"></script>
+    	<script src="../../revealjs/plugin/math/math.js"></script>
+		<script>
+
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				center: true,
+				hash: true,
+				width: 1280,
+				height: 720,
+				progress: false,
+
+				plugins: [RevealMath.MathJax2,RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight ]
+			});
+
+		</script>
+
+	</body>
+</html>

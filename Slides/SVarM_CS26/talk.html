@@ -48,7 +48,7 @@
 		sub {
     	font-size: 0.2em;
 		}
-		div.title {			
+		div.title {
 		vertical-align: center;
 		display: inline-block;
 		  border-radius: 10px;
@@ -93,19 +93,19 @@
 
 				<section data-markdown>
   				<textarea data-template>
-					<h4>SVarM: regression and classification <br> in the space of varifold representations of geometric data</h4>
-					<hr>	
-					<div class="row" style="margin-top: 100px;">						
+					<h4>SVarM: regression and classification <br> in the space of varifold representations of surfaces</h4>
+					<hr>
+					<div class="row" style="margin-top: 100px;">
 					<div class="col-md-2" align="left" markdown="1">
-					</div>								
-					<div class="col-md-8" align="center" markdown="1">
-						<p><b>Emmanuel Hartman</b>,  Murad Hossen,  and Nicolas Charon<br>
-						University of Houston<br></p><hr><p>Curves and Surfaces 2026<br>12 June 2026</p>
-					</div>											
-					<div class="col-md-2" align="left" markdown="1">
-					</div>				
 					</div>
-					<div class="row" style="margin-top: 100px;">					
+					<div class="col-md-8" align="center" markdown="1">
+						<p><b>Emmanuel Hartman</b>,  and Nicolas Charon<br>
+						University of Houston<br></p><hr><p>Curves and Surfaces 2026<br>12 June 2026</p>
+					</div>
+					<div class="col-md-2" align="left" markdown="1">
+					</div>
+					</div>
+					<div class="row" style="margin-top: 100px;">
 					<div class="col-md-4" align="left" markdown="1">
 						<img src="figs/nsf.png" height="120px" />
 					</div>
@@ -120,22 +120,21 @@
 
 				<section data-markdown>
 				<textarea data-template>
-				<h4 align="left">Shape Data</h4><hr>
+				<h4 align="left">Challenges Realities of working with Surface Data</h4><hr>
 				<div class="col-md-4" markdown="1" align="center" vertical-align="center">
-						<iframe
-							src="skull.html"
-							width="100%"
-							height="200px"
-							style="border:none;">
-						</iframe>
 						<iframe
 							src="titan.html"
 							width="100%"
 							height="150px"
 							style="border:none;">
 						</iframe>
-					<img src="figs/humans.png" width="100%" />
-					<p>n > 40,000 , 10 identities</p>
+						<img src="figs/humans.png" width="100%" />
+						<iframe
+							src="skull.html"
+							width="100%"
+							height="200px"
+							style="border:none;">
+						</iframe>
 				</div>
 				<div class="col-md-4" markdown="1" align="left" vertical-align="center">
 						<img src="figs/hearts_results.png" width="100%" /><br>
@@ -162,12 +161,12 @@
 				</div>
 				<div class="col-md-4" markdown="1" align="left" vertical-align="center">
 					  <div>
-						<p><strong>Challenges with Geometric Data:</strong></p>
-						<ul>
-						<li><p>Advances have led to the acquisition of more complex and detailed data.</p></li>
-						<li><p>This has also increased the availability of larger datasets.</p></li>
-						<li><p>Samples are high-dimensional, and multiple samples in a dataset may have different dimensions.</p></li>
-						<li><p>Geometric data includes variability that does not change the shape of the data (e.g., sampling and reparameterization).</p></li>
+						<ul style="list-style-position: outside; ; padding: 20; margin: 0;">
+						<li style="margin-bottom:7px;" ><p>Acessiblility of 3D surface capture has lead to an abundance of data.<br></p><br></li>
+						<li style="margin-bottom:7px;" ><p>Large curated surface datasets (i.e AMASS ~9.3 million surfaces) create an oppurtunity for learning based approaches. <br></p></li>
+						<li style="margin-bottom:7px;" ><p>Moreover, 3D scans are able to capture more topologically complex and detailed data. <br></p></li>
+						<li style="margin-bottom:7px;" ><p>Detailed surface scans require high-dimensional representations (large number of vertices/faces), and multiple samples in a dataset do not have a fixed dimensionality.<br></p></li>
+						<li style="margin-bottom:7px;" ><p>Surface data includes variability that does not change the shape of the data (e.g., sampling and reparameterization).<br></p></li>
 						</ul>
 						</p>
 					</div>
@@ -183,7 +182,7 @@
 				<div class="col-md-7" markdown="1" align="left" vertical-align="center"><p>
 					<b>Parameterized Objects :</b> bi-Lipschitz regular embedding from $M$ to $\R^3$ <br>$$\mathcal{I} := \operatorname{Emb}_{\text{Lip}}(M,\R^3)$$<br>
 					<b>Reparameterization Group :</b> a bi-Lipschitz homeomorphism of $M$ <br>$$\mathcal{D} := \operatorname{Diff}_{\text{Lip}}(M)$$<br>
-					<b>Shape Space:</b> We consider the space of shape as the quotient space of equivalence classes. <br>$$\mathcal{S} := \mathcal{I}/\mathcal{D}$$ $$[q]=\{q \circ \gamma: \ \gamma \in \mathcal{D}\}$$<br><br></p><div class="fragment" data-fragment-index="2"><p>How can we represent geometric data in a parameterization invariant way?  </p></div></div>
+					<b>Shape Space:</b> We consider the space of shape as the quotient space of equivalence classes. <br>$$\mathcal{S} := \mathcal{I}/\mathcal{D}$$ $$[q]=\{q \circ \gamma: \ \gamma \in \mathcal{D}\}$$<br><br></p><div class="fragment" data-fragment-index="2"><p>How can we represent surfaces in a parameterization invariant way?  </p></div></div>
 				<div class="col-md-5" markdown="1" align="left" vertical-align="center"><br><img src="figs/shape_space.png" width="100%" /></div>
 				</textarea>
 				</section>
@@ -199,7 +198,7 @@
 				</div></div></div>
 				<div class="fragment" data-fragment-index="2"><p>By the Riesz-Markov-Kakutani representation theorem, $\mathcal{V}$ is the dual of $C_0(\R^3\times S^2,\R)$. The duality bracket between $\mathcal{V}$ and $C_0(\R^3 \times S^2,\R)$ is given by $$\langle \mu , h\rangle = \int_{\R^3 \times S^2} h(x,v) d\mu(x,v).$$
 				</p></div></div>
-				<div class="col-md-6" markdown="1" align="center" vertical-align="center"><img src="figs/varifold_representations2.png" width="50%" /><br><p>$$\mu_q = \sum_{i=1}^ma_i \delta_{(c_i,n_i)}$$</p><br><img src="figs/varifold_representations.png" width="100%" /></div>
+				<div class="col-md-6" markdown="1" align="center" vertical-align="center"><img src="figs/varifold_representations2.png" width="50%" /><br><p>$$\mu_q \approx \sum_{i=1}^ma_i \delta_{(c_i,n_i)}$$</p><br><img src="figs/varifold_representations.png" width="100%" /></div>
 				<p align="left"><sub>$^1$Charon & Trouvé. "The varifold representation of nonoriented shapes for diffeomorphic registration."</sub><br>
 				<sub>$^2$Kaltenmark, et al. "A general framework for curve and surface comparison and registration with oriented varifolds."</sub><br>
 				<sub>$^3$Feydy et al. "Optimal transport for diffeomorphic registration"</sub><br>
@@ -415,82 +414,62 @@
 				</textarea>
 				</section>
 
-
-				<section data-markdown>
-				<textarea data-template>
-				<h4 align="left">Nonlinear SVarM Regression and Classification in Practice</h4><hr>
-				<div class="col-md-12" markdown="1" align="left" vertical-align="center">
-					<p>Fractal dimension of 2D or 3D curves is typically computed in practice via the box counting algorithm, based on the formula: $F = \lim\limits_{D \rightarrow 0} \frac{-\log N(D)}{\log D}$. It usually involves computing box coverings over many scales and rotation angles.<br></p>
-				</div>			
-				<div class="col-md-12" markdown="1" align="center" vertical-align="center"><img src="figs/FD_Combined.png" width="80%" /></div>			
-				<div class="col-md-12" markdown="1" align="left" vertical-align="center">
-					<p><br>We consider the <b>PneumoniaMNIST</b> dataset of 5856 chest X-ray scans from the <b>MedMNIST</b> repository (Training: 4,708 / Validation: 524 / Test: 624). The 2D images are represented as varifolds by computing their corresponding (filtered) unit gradient vector fields, which is a contrast-invariant representation.<br></p>
-				</div>				
-				<div class="col-md-3" markdown="1" align="left" vertical-align="center"><img src="figs/PneumoniaNist.png" width="90%" /></div>				
-				<div class="col-md-6" markdown="1" align="left" vertical-align="center">
-				<table style="border-collapse:collapse; font-size:0.5em; margin-top:0.5em;">
-					<thead>
-						<tr>
-							<th style="border:1px solid #000; padding:3px 6px; text-align:right;">Method</th>
-							<th style="border:1px solid #000; padding:3px 6px; text-align:center;">Accuracy</th>
-							<th style="border:1px solid #000; padding:3px 6px; text-align:center;">AUC</th>
-							<th style="border:1px solid #000; padding:3px 6px; text-align:center;">Params</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td style="border:1px solid #000; padding:3px 6px; text-align:right;">ResNet-18</td>
-							<td style="border:1px solid #000; padding:3px 6px; text-align:center;">86.4%</td>
-							<td style="border:1px solid #000; padding:3px 6px; text-align:center;">0.956</td>
-							<td style="border:1px solid #000; padding:3px 6px; text-align:center;">~11.7M</td>
-						</tr>
-						<tr>
-							<td style="border:1px solid #000; padding:3px 6px; text-align:right;">ResNet-50</td>
-							<td style="border:1px solid #000; padding:3px 6px; text-align:center;">88.4%</td>
-							<td style="border:1px solid #000; padding:3px 6px; text-align:center;">0.962</td>
-							<td style="border:1px solid #000; padding:3px 6px; text-align:center;">~25.5M</td>
-						</tr>
-						<tr>
-							<td style="border:1px solid #000; padding:3px 6px; text-align:right;">SVarM (Linear)</td>
-							<td style="border:1px solid #000; padding:3px 6px; text-align:center;">92.2%</td>
-							<td style="border:1px solid #000; padding:3px 6px; text-align:center;">0.963</td>
-							<td style="border:1px solid #000; padding:3px 6px; text-align:center;">1,300</td>
-						</tr>
-						<tr>
-							<td style="border:1px solid #000; padding:3px 6px; text-align:right;">SVarM (Non-Linear)</td>
-							<td style="border:1px solid #000; padding:3px 6px; text-align:center;">93.1%</td>
-							<td style="border:1px solid #000; padding:3px 6px; text-align:center;">0.978</td>
-							<td style="border:1px solid #000; padding:3px 6px; text-align:center;">36,962</td>
-						</tr>
-					</tbody>
-				</table>
-				</div>
-				</textarea>
-				</section>
-
-
-
 				<section data-markdown>
 					<textarea data-template>
 						<h4 align="left">Conclusion And Future Work</h4><hr>
 						<p align="left"><br>
-						We discuss learning methods for parameterization invariant functions of geometric data by approximating linear functions on the space of varifolds.<br>
-						We propose a framework that leverages varifold representations of geometric data and their duality with $C_0(\R^3\times S^2,\R)$.<br>
-						Linear functions on the space of varifolds are surprisingly good at approximating functions that you might expect to be non-linear.<br><br></p><div class="row">
+						We discuss learning methods for parameterization invariant functions of surface data by approximating linear functions on the space of varifolds.<br>
+						We propose a framework that leverages varifold representations of geometric data and their duality with $C_0(\R^3\times S^2,\R)$.<br><br></p><div class="row">
 						<div class="col-md-8" markdown="1" align="left">
 							<p class="fragment fade-left">+ Performing experiments with the framework for approximating non-linear functions and classification as described in the previous slide.<br><br> </p><br>
-							<p class="fragment fade-left">+ Applications to large and complex datasets where standard methods are restrictive.  </p><br>
+							<p class="fragment fade-left">+ Applications other types of data that can be represented by varifolds (ie. contrast invariant representations of images).  </p><br>
 							<hr>
 							<p>
 							This talk is based on:<br><a href="https://arxiv.org/abs/2506.01189">https://arxiv.org/abs/2506.01189</a><br>
-							The code for a Pytorch implementation SVarM model is available at:<br> <a href="https://github.com/SVarM25/SVarM">https://github.com/SVarM25/SVarM</a><br>
+							The code for a Pytorch implementation of the SVarM model is available at:<br> <a href="https://github.com/SVarM25/SVarM">https://github.com/SVarM25/SVarM</a><br>
 							These slides are available at:<br><a href="https://emmanuel-hartman.github.io/Talks/Slides/SVarM_CS26/talk.html">https://emmanuel-hartman.github.io/Talks/Slides/SVarM_CS26/talk.html</a>
 						</p>
 						</div>
 
 						<div class="col-md-4" markdown="1" align="center">
-						<img src="figs/separator.png" width="100%"/>
-						<br><br>
+						<img src="figs/PneumoniaNist.png" width="90%" />
+						<table style="border-collapse:collapse; font-size:0.35em; margin-top:0.35em;">
+							<thead>
+								<tr>
+									<th style="border:1px solid #000; padding:3px 6px; text-align:right;">Method</th>
+									<th style="border:1px solid #000; padding:3px 6px; text-align:center;">Accuracy</th>
+									<th style="border:1px solid #000; padding:3px 6px; text-align:center;">AUC</th>
+									<th style="border:1px solid #000; padding:3px 6px; text-align:center;">Params</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td style="border:1px solid #000; padding:3px 6px; text-align:right;">ResNet-18</td>
+									<td style="border:1px solid #000; padding:3px 6px; text-align:center;">86.4%</td>
+									<td style="border:1px solid #000; padding:3px 6px; text-align:center;">0.956</td>
+									<td style="border:1px solid #000; padding:3px 6px; text-align:center;">~11.7M</td>
+								</tr>
+								<tr>
+									<td style="border:1px solid #000; padding:3px 6px; text-align:right;">ResNet-50</td>
+									<td style="border:1px solid #000; padding:3px 6px; text-align:center;">88.4%</td>
+									<td style="border:1px solid #000; padding:3px 6px; text-align:center;">0.962</td>
+									<td style="border:1px solid #000; padding:3px 6px; text-align:center;">~25.5M</td>
+								</tr>
+								<tr>
+									<td style="border:1px solid #000; padding:3px 6px; text-align:right;">SVarM (Linear)</td>
+									<td style="border:1px solid #000; padding:3px 6px; text-align:center;">92.2%</td>
+									<td style="border:1px solid #000; padding:3px 6px; text-align:center;">0.963</td>
+									<td style="border:1px solid #000; padding:3px 6px; text-align:center;">1,300</td>
+								</tr>
+								<tr>
+									<td style="border:1px solid #000; padding:3px 6px; text-align:right;">SVarM (Non-Linear)</td>
+									<td style="border:1px solid #000; padding:3px 6px; text-align:center;">93.1%</td>
+									<td style="border:1px solid #000; padding:3px 6px; text-align:center;">0.978</td>
+									<td style="border:1px solid #000; padding:3px 6px; text-align:center;">36,962</td>
+								</tr>
+							</tbody>
+						</table>
+						<br>
 						<center><p>Thank you for your attention!</p></center>
 					</textarea>
 				</section>

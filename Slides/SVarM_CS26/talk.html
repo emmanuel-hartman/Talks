@@ -205,7 +205,7 @@
 				</div></div></div>
 				<div class="fragment" data-fragment-index="3"><p>By the Riesz-Markov-Kakutani representation theorem, $\mathcal{V}$ is the dual of $C_0(\R^3\times S^2,\R)$. The duality bracket between $\mathcal{V}$ and $C_0(\R^3 \times S^2,\R)$ is given by $$\langle \mu , h\rangle = \int_{\R^3 \times S^2} h(x,v) d\mu(x,v).$$
 				</p></div></div>
-				<div class="col-md-6" markdown="1" align="center" vertical-align="center"><div class="fragment" data-fragment-index="1"><img src="figs/varifold_representations2.png" width="50%" /><p>$$ \qquad\qquad\mu_q \approx \sum_{i=1}^ma_i \delta_{(c_i,n_i)}$$</p></div><br><div class="fragment" data-fragment-index="2"> <img src="figs/varifold_representations.png" width="100%" /> </div></div>
+				<div class="col-md-6" markdown="1" align="center" vertical-align="center"><div class="fragment" data-fragment-index="1"><img src="figs/varifold_representations2.png" width="50%" /><p>$$ \qquad\qquad\mu_q \approx \sum_{f\in F}a_f \delta_{(c_f,n_f)}$$</p></div><br><div class="fragment" data-fragment-index="2"> <img src="figs/varifold_representations.png" width="100%" /> </div></div>
 				<p align="left"><sub>$^1$Charon & Trouvé. "The varifold representation of nonoriented shapes for diffeomorphic registration."</sub><br>
 				<sub>$^2$Kaltenmark, et al. "A general framework for curve and surface comparison and registration with oriented varifolds."</sub><br>
 				<sub>$^3$Feydy et al. "Optimal transport for diffeomorphic registration"</sub><br>
@@ -221,7 +221,7 @@
 					<br>
 				<div class="col-md-6" markdown="1" align="left" vertical-align="center">
 					<p> Support vector machines (SVMs) perform linear regression in $\R^n$ by learning the optimal $w\in \R^n,\beta\in \R$ so that $$f(v) \approx v\cdot w+\beta.$$</p>
-					<p> SVMs perform linear classification by learning the optimal $w\in \R^n,\beta\in \R$ such that the hyperplane given by $$\{v\in \R^n\,|\, v\cdot w = \beta \}$$ separates subsets of $\R^n$.</p><br><br>
+					<p> SVMs perform linear classification by finding the optimal $w\in \R^n,\beta\in \R$ such that the hyperplane given by $$\{v\in \R^n\,|\, v\cdot w = \beta \}$$ separates subsets of $\R^n$.</p><br><br>
 					<div class="b" align="left"><div class="bbody" align="left"><b>Definition.</b> Two disjoint sets $C_1,C_2 \subseteq \R^n$ are strictly separated by a hyperplane defined by  $w\in \R^n,\beta\in \R$ when:
 					\begin{equation}
 					\sup_{v\in C_1} v\cdot w \,< \beta < \, \inf_{u\in C_2} u\cdot w
@@ -243,7 +243,7 @@
 					<p>The <b>S</b>upport <b>Var</b>ifold <b>M</b>achine (SVarM) model mirrors the approach of SVMs replacing vector inner products by the duality bracket.
 				<div class="col-md-6" markdown="1" align="left" vertical-align="center">
 					<p> Support vector machines (SVMs) perform linear regression in $\R^n$ by learning the optimal $w\in \R^n,\beta\in \R$ so that $$f(v) \approx v\cdot w+\beta.$$</p>
-					<p> SVMs perform linear classification by learning the optimal $w\in \R^n,\beta\in \R$ such that the hyperplane given by $$\{v\in \R^n\,|\, v\cdot w = \beta \}$$ separates subsets of $\R^n$.<br><br></p>
+					<p> SVMs perform linear classification by finding the optimal $w\in \R^n,\beta\in \R$ such that the hyperplane given by $$\{v\in \R^n\,|\, v\cdot w = \beta \}$$ separates subsets of $\R^n$.<br><br></p>
 					<div class="b" align="left"><div class="bbody" align="left"><b>Definition.</b> Two disjoint sets $C_1,C_2 \subseteq \R^n$ are strictly separated by a hyperplane defined by  $w\in \R^n,\beta\in \R$ when:
 					\begin{equation}
 					\sup_{v\in C_1} v\cdot w \,< \beta < \, \inf_{u\in C_2} u\cdot w
@@ -253,7 +253,7 @@
 				<div class="col-md-6" markdown="1" align="left" vertical-align="center">
 					<p> Linear regression is performed by finding the optimal $h \in C_0(\mathbb{R}^3 \times S^2, \mathbb{R}), \beta \in \mathbb{R}$ so that $$f(\mu)\approx \langle\mu,h\rangle+\beta.$$</p>
 					<br>
-					<p> Linear classification is performed by learning $h \in C_0(\mathbb{R}^3 \times S^2, \mathbb{R})$ ,$\beta \in \mathbb{R}$ which define a codimension 1 subspace of $\mathcal{V}$ given by $$\{\mu\in \mathcal{V}\,|\,\langle \mu,h\rangle = \beta \}$$ that separate sets of varifolds.   </p>
+					<p> Linear classification is performed by finding $h \in C_0(\mathbb{R}^3 \times S^2, \mathbb{R})$ ,$\beta \in \mathbb{R}$ which define a codimension 1 subspace of $\mathcal{V}$ given by $$\{\mu\in \mathcal{V}\,|\,\langle \mu,h\rangle = \beta \}$$ that separate sets of varifolds.   </p>
 					<div class="b" align="left"><div class="bbody" align="left"><b>Definition.</b> Two disjoint sets $C_1,C_2 \subseteq \mathcal{V}$ are strictly separated by some test function $h$ when:
 					\begin{equation}
 					\sup_{\mu\in C_1} \langle \mu,h\rangle \,<\, \inf_{\nu\in C_2} \langle \nu,h\rangle
@@ -274,7 +274,7 @@
 				<div class="col-md-6" markdown="1" align="left" vertical-align="center">
 					<p> Linear regression is performed by finding the optimal $h \in C_0(\mathbb{R}^3 \times S^2, \mathbb{R}), \beta \in \mathbb{R}$ so that $$f(\mu)\approx \langle\mu,h\rangle+\beta.$$</p>
 					<br>
-					<p> Linear classification is performed by learning $h \in C_0(\mathbb{R}^3 \times S^2, \mathbb{R})$ ,$\beta \in \mathbb{R}$ which define a codimension 1 subspace of $\mathcal{V}$ given by $$\{\mu\in \mathcal{V}\,|\,\langle \mu,h\rangle = \beta \}$$ that separate sets of varifolds.   </p>
+					<p> Linear classification is performed by finding $h \in C_0(\mathbb{R}^3 \times S^2, \mathbb{R})$ ,$\beta \in \mathbb{R}$ which define a codimension 1 subspace of $\mathcal{V}$ given by $$\{\mu\in \mathcal{V}\,|\,\langle \mu,h\rangle = \beta \}$$ that separate sets of varifolds.   </p>
 					<div class="b" align="left"><div class="bbody" align="left"><b>Definition.</b> Two disjoint sets $C_1,C_2 \subseteq \mathcal{V}$ are strictly separated by some test function $h$ when:
 					\begin{equation}
 					\sup_{\mu\in C_1} \langle \mu,h\rangle \,<\, \inf_{\nu\in C_2} \langle \nu,h\rangle
@@ -322,7 +322,7 @@
 				<section data-markdown>
 				<textarea data-template>
 				<h4 align="left"> Approximating Optimal Test Functions</h4><hr>
-				<div class="col-md-12" markdown="1" align="left" vertical-align="center"><p>Given a function $f$ on a set of shapes, how can we learn a test funtion $h\in C_0(\R^3\times S^2,\R)$ and bias $\beta\in\R$ so that $$f(q)\approx\langle\mu_q,h\rangle+\beta?$$</p><br><br></div>
+				<div class="col-md-12" markdown="1" align="left" vertical-align="center"><p>Given a function $f$ on a set of shapes how can we search for a test funtion $h\in C_0(\R^3\times S^2,\R)$ and bias $\beta\in R$ such that $$f(q)\approx\langle\mu_q,h\rangle+\beta?$$</p><br><br></div>
 				<div class="col-md-6" markdown="1" align="left" vertical-align="center"><div class="fragment" data-fragment-index="2"><p>To learn a linear function in the space of varifolds, we approximate a test function using an MLP,<br> $h_\theta:\R^{6}\to\R$ with trainable parameters $\theta$.<br><br>
 				To perform multi-class classification of varifolds, we modify the architecture to learn a vector valued functions $h_\theta:\R^6\to \R^c$ where $\int_{\R^3\times S^2} h_\theta \operatorname{d}\mu$ is a $c$-dimensional vector where each entry is interpreted as a logit of the probability that $\mu$ belongs to the corresponding class.</p></div></div>
 				<div class="col-md-6" markdown="1" align="center" vertical-align="center"><div class="fragment" data-fragment-index="3"><p><img src="figs/NeuralNetworkModel.png" width="100%" /></p></div></div>

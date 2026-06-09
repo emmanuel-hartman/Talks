@@ -120,24 +120,38 @@
 
 				<section data-markdown>
 				<textarea data-template>
-				<h4 align="left">Challenges Realities of working with Surface Data</h4><hr>
+				<h4 align="left"><s>Challenges</s> Realities of working with Surface Data</h4><hr>
 				<div class="col-md-4" markdown="1" align="center" vertical-align="center">
-						<iframe
-							src="titan.html"
-							width="100%"
-							height="150px"
-							style="border:none;">
-						</iframe>
+						<div class="row">
+						<div class="col-md-12" markdown="1" align="center" vertical-align="center">
+							<div style="position:relative; width:100%; height:300px;">
+						    <iframe
+						        src="titan.html"
+						        width="100%"
+						        height="300px"
+						        style="border:none; position:absolute; top:0; left:0; z-index:1;">
+						    </iframe>
+						    <img
+						        src="figs/titan.gif"
+						        height="150"
+						        style="position:absolute;
+						               top:10px;
+						               left:10px;
+						               z-index:10;
+						               pointer-events:none;">
+						</div>
+					</div>
+					</div>
+					<br>
 						<img src="figs/humans.png" width="100%" />
+				</div>
+				<div class="col-md-4" markdown="1" align="left" vertical-align="center">
 						<iframe
 							src="skull.html"
 							width="100%"
-							height="200px"
+							height="300px"
 							style="border:none;">
 						</iframe>
-				</div>
-				<div class="col-md-4" markdown="1" align="left" vertical-align="center">
-						<img src="figs/hearts_results.png" width="100%" /><br>
 						<iframe
 							src="LAA_sbs2.html"
 							width="100%"
@@ -148,23 +162,16 @@
 							<div class="col-md-6" markdown="1" align="left" vertical-align="center"><p>Vertices: 1430 <br> Faces: 2865</p></div>
 							<div class="col-md-6" markdown="1" align="left" vertical-align="center"><p>Vertices: 10252 <br> Faces: 20532</p></div>
 						</div>
-						<iframe
-							src="LAA_sbs.html"
-							width="100%"
-							height="150px"
-							style="border:none;">
-						</iframe>
-						<div class="row">
-							<div class="col-md-6" markdown="1" align="left" vertical-align="center"><p>Vertices: 1430 <br> Faces: 2865</p></div>
-							<div class="col-md-6" markdown="1" align="left" vertical-align="center"><p>Vertices: 7720 <br> Faces: 15448</p></div>
-						</div>
 				</div>
 				<div class="col-md-4" markdown="1" align="left" vertical-align="center">
 					  <div>
-						<ul style="list-style-position: outside; ; padding: 20; margin: 0;">
-						<li style="margin-bottom:7px;" ><p>Acessiblility of 3D surface capture has lead to an abundance of data.<br></p><br></li>
-						<li style="margin-bottom:7px;" ><p>Large curated surface datasets (i.e AMASS ~9.3 million surfaces) create an oppurtunity for learning based approaches. <br></p></li>
-						<li style="margin-bottom:7px;" ><p>Moreover, 3D scans are able to capture more topologically complex and detailed data. <br></p></li>
+						<ul style="list-style-position: outside; ; padding: 20; margin: 10;">
+						<li style="margin-bottom:7px;" ><p>Acessiblility of 3D surface capture (ie photogrammetry) has lead to an abundance of data.<br></p><br></li>
+						<li style="margin-bottom:7px;" ><p>Moreover, 3D scans are increasingly able to capture more topologically complex and detailed data. <br></p></li>
+						<li style="margin-bottom:7px;" ><p>Large curated surface datasets (i.e AMASS ~9.3 million surfaces) create an oppurtunity for learning based approaches. <br></p><br></li>
+						</ul>
+						<p><strong>Challenges For Learning on Surfaces</strong></p>
+						<ul style="list-style-position: outside; ; padding: 20; margin: 10;">
 						<li style="margin-bottom:7px;" ><p>Detailed surface scans require high-dimensional representations (large number of vertices/faces), and multiple samples in a dataset do not have a fixed dimensionality.<br></p></li>
 						<li style="margin-bottom:7px;" ><p>Surface data includes variability that does not change the shape of the data (e.g., sampling and reparameterization).<br></p></li>
 						</ul>
@@ -192,13 +199,13 @@
 				<h4 align="left">Varifold Representations of Geometric Data$^{1,2,3,4}$</h4><hr>
 				<div class="row">
 				<div class="col-md-6" markdown="1" align="left" vertical-align="center"><p>   We consider the space of varifolds, $\mathcal{V}$, given by the positive Radon measure on $\R^3 \times S^2$ where $S^2$ denotes the unit sphere.<br><br>
-				Any $q\in \mathcal{I}$ can be canonically mapped to a varifold given by the pushforward measure $\mu_q : =(q,v_q)_*\vol_q \in \mathcal{V}$ where $v_q$ denotes the unit normal vector field and $\vol_q$ is the induced area measure on $M$.</p><br>
-				<div class="fragment" data-fragment-index="1"><div class="b" align="left"><div class="bbody" align="left"><b>Theorem 1.</b> For any $q\in \mathcal{I}$ and $\gamma\in\mathcal{D}$, it holds that $ \mu_{q\circ\gamma}=\mu_q$.
+				Any $q\in \mathcal{I}$ can be canonically mapped to a varifold given by the pushforward measure $\mu_q : =(q,v_q)_*\vol_q \in \mathcal{V}$ where $v_q$ denotes the unit normal vector field and $\vol_q$ is the area measure on $M$.</p><br>
+				<div class="fragment" data-fragment-index="2"><div class="b" align="left"><div class="bbody" align="left"><b>Theorem 1.</b> For any $q\in \mathcal{I}$ and $\gamma\in\mathcal{D}$, it holds that $ \mu_{q\circ\gamma}=\mu_q$.
 				Consequently, one obtains a well-defined map $[q] \in \mathcal{S} \mapsto \mu_q \in \mathcal{V}$ which, in addition, is injective.
 				</div></div></div>
-				<div class="fragment" data-fragment-index="2"><p>By the Riesz-Markov-Kakutani representation theorem, $\mathcal{V}$ is the dual of $C_0(\R^3\times S^2,\R)$. The duality bracket between $\mathcal{V}$ and $C_0(\R^3 \times S^2,\R)$ is given by $$\langle \mu , h\rangle = \int_{\R^3 \times S^2} h(x,v) d\mu(x,v).$$
+				<div class="fragment" data-fragment-index="3"><p>By the Riesz-Markov-Kakutani representation theorem, $\mathcal{V}$ is the dual of $C_0(\R^3\times S^2,\R)$. The duality bracket between $\mathcal{V}$ and $C_0(\R^3 \times S^2,\R)$ is given by $$\langle \mu , h\rangle = \int_{\R^3 \times S^2} h(x,v) d\mu(x,v).$$
 				</p></div></div>
-				<div class="col-md-6" markdown="1" align="center" vertical-align="center"><img src="figs/varifold_representations2.png" width="50%" /><br><p>$$\mu_q \approx \sum_{i=1}^ma_i \delta_{(c_i,n_i)}$$</p><br><img src="figs/varifold_representations.png" width="100%" /></div>
+				<div class="col-md-6" markdown="1" align="center" vertical-align="center"><div class="fragment" data-fragment-index="1"><img src="figs/varifold_representations2.png" width="50%" /><p>$$ \qquad\qquad\mu_q \approx \sum_{i=1}^ma_i \delta_{(c_i,n_i)}$$</p></div><br><div class="fragment" data-fragment-index="2"> <img src="figs/varifold_representations.png" width="100%" /> </div></div>
 				<p align="left"><sub>$^1$Charon & Trouvé. "The varifold representation of nonoriented shapes for diffeomorphic registration."</sub><br>
 				<sub>$^2$Kaltenmark, et al. "A general framework for curve and surface comparison and registration with oriented varifolds."</sub><br>
 				<sub>$^3$Feydy et al. "Optimal transport for diffeomorphic registration"</sub><br>
@@ -324,34 +331,42 @@
 
 				<section data-markdown>
 				<textarea data-template>
-				<h4 align="left"> Regression Results</h4><hr>
+				<h4 align="left"> Linear Regression and Classification Expeirements</h4><hr>
 				<div class="col-md-6" markdown="1" align="left" vertical-align="center">
-					<p><b>Single-Axis Rotation Regression:</b> On ~8k synthetically rotated FAUST meshes, our model accurately predicts rotation angles around a fixed axis, realigning scans with high correlation to ground truth and interpretable face-wise function values.
-					<br><br><br><b>Full 3D Rotation Regression:</b> We extended the task to arbitrary 3D rotations (12.8k meshes with an 80 - 20 training/testing split), where the model learns to regress rotation matrices, achieving low mean geodesic error in $SO(3)$ and strong $R^2$ scores.
-					<br><br><br><b>Comparison to Optimization Baseline:</b> Our model attains superior accuracy to direct optimization over $SO(3)$. This optimization requires ~15-30s per mesh while our trained model aligns the entire test set in <15s.</p>
+					<div class="fragment" data-fragment-index="1"><p><b>Rotation Regression:</b> We perform regression on ~13k synthetically rotated human meshes (with an 80-20 training testing split). Each mesh is labeled by the rotation matrix applied to an upright mesh to generated the data. We apply the inverse of the predicted matrix to realign the testing data.
+					<br><br><b>Comparison to Optimization Baseline:</b> Our model attains superior accuracy to direct optimization over $SO(3)$. This optimization requires ~15-30s per mesh while our trained model aligns the entire test set in <15s.
+					</p></div>
+					<br>
+					<div class="fragment" data-fragment-index="2"><p><b>MNIST Surfaces:</b> Converted the full MNIST dataset into 3D height-map meshes (20 minutes preprocessing). Training used ~60k meshes with digits as labels, and testing was done on ~10k meshes.
+					<br><br><b>Efficiency vs. Accuracy:</b> Despite having $<$2k parameters, SVarM achieves 97.7% accuracy on MNIST, outperforming models that require significantly more parameters.
+					</p></div>
 				</div>
 				<div class="col-md-6" markdown="1" align="left" vertical-align="center">
-					<div class="fragment" data-fragment-index="2"><img src="figs/Regression1.png" width="100%" /></div><br>
-					<div class="fragment" data-fragment-index="3"><img src="figs/Regression2.png" width="100%" /></div>
+					<div class="fragment" data-fragment-index="1"><img src="figs/Regression2.png" width="100%" /></div><br>
+					<div class="fragment" data-fragment-index="2"><img src="figs/MNIST_Classify.png" width="100%" /></div>
 				</div>
 				</textarea>
 				</section>
 
 				<section data-markdown>
 				<textarea data-template>
-				<h4 align="left"> Classification Results</h4><hr>
-				<div class="col-md-6" markdown="1" align="left" vertical-align="center">
-					<div class="fragment" data-fragment-index="1"><p><b>MNIST Surfaces:</b> Converted the full MNIST dataset into 3D height-map meshes (20 minutes preprocessing). Training used ~60k meshes with digits as labels, and testing was done on ~10k meshes.
-					</p></div><br>
-					<div class="fragment" data-fragment-index="3"><p><b>Efficiency vs. Accuracy:</b> Despite having $<$2k parameters, SVarM achieves 97.7% accuracy on MNIST, outperforming models that require significantly more parameters.
-					</p></div><br>
-					<div class="fragment" data-fragment-index="4"><p><b>COMA Face Scans:</b> ~21k 3D facial scans of 12 identities, split into 80% training and 20% testing. SVarM attains 99.98% accuracy on the unseen data.
-					</p></div><br>
-					<div class="fragment" data-fragment-index="5"><p><b>Robustness to Data Loss and Remeshing:</b> We test the robustness of the model by applying data loss (missing faces) and resampling (mesh decimation) to the testing sets and report the accuracy reduction as the data loss and remeshing becomes more severe.</p></div>
+				<h4 align="left"> Stability Results</h4><hr>
+				<div class="col-md-8" markdown="1" align="left" vertical-align="center">
+					<div class="fragment" data-fragment-index="1"><div class="b" align="left"><div class="bbody" align="left"><b>Theorem 3 (Stability in the Space of Varifolds).</b>
+							Let $\mu,\nu\in\mathcal{V}$ and $h\in C_0(\R^n\times S^{n-1})$ such that $h$ is Lipchitz with constant $K$. Then,
+							$$|\langle\mu,h\rangle - \langle\nu,h\rangle|\leq\|h\|_\infty\cdot \|\mu-\nu\|_{\text{TV}}$$
+							and
+							$$|\langle\mu,h\rangle - \langle\nu,h\rangle|\leq \left|\|\mu\|_{\text{TV}}-\|\nu\|_{\text{TV}}\right|\cdot\|h\|_\infty + \|\mu\|_{\text{TV}}\cdot K\cdot W_1\left(\frac{\mu}{m_\mu},\frac{\nu}{m_\nu}\right)$$
+							where $W_1$ denotes the 1-Wasserstein distance.
+					</div></div></div><br>
+					<div class="fragment" data-fragment-index="2"><div class="b" align="left"><div class="bbody" align="left"><b>Theorem 4 (Stability in the Space of Surfaces).</b>
+					Let $h\in C_0(\R^n\times S^{n-1})$ such that $h$ is Lipschitz with constant $K$ and $q,q' \in \mathcal{I}$ such that $\|q - q'\|_{W^{1,\infty}} \leq C$. Then
+	        $$|\langle\mu_{q},h\rangle - \langle\mu_{q'},h\rangle| \leq CA_q(KC_1+C_2\|h\|_{\infty})$$
+	    		where $A_q$ is the surface area of $q$, and $C_1,C_2$ depend the maximum of the Lipschitz constants of $q$ and $q'$.
+				</div></div></div>
 				</div>
-				<div class="col-md-6" markdown="2" align="left" vertical-align="center">
-					<div class="fragment" data-fragment-index="2"><img src="figs/MNIST_Classify.png" width="100%" /></div><br>
-					<div class="fragment" data-fragment-index="5"><img src="figs/loss_robust.png" width="40%" /><img src="figs/decimation_robust.png" width="40%" /></div>
+				<div class="col-md-4" markdown="2" align="left" vertical-align="center">
+					<div class="fragment" data-fragment-index="1"><br><img src="figs/loss_robust.png" width="100%" /></div><br><div class="fragment" data-fragment-index="2"><img src="figs/decimation_robust.png" width="100%" /></div>
 				</div>
 				</textarea>
 				</section>
@@ -422,6 +437,7 @@
 						We propose a framework that leverages varifold representations of geometric data and their duality with $C_0(\R^3\times S^2,\R)$.<br><br></p><div class="row">
 						<div class="col-md-8" markdown="1" align="left">
 							<p class="fragment fade-left">+ Performing experiments with the framework for approximating non-linear functions and classification as described in the previous slide.<br><br> </p><br>
+							<p class="fragment fade-left">+ Develop a method to visualize and interpret learned test functions.<br><br> </p><br>
 							<p class="fragment fade-left">+ Applications other types of data that can be represented by varifolds (ie. contrast invariant representations of images).  </p><br>
 							<hr>
 							<p>

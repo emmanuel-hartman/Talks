@@ -322,7 +322,7 @@
 				<section data-markdown>
 				<textarea data-template>
 				<h4 align="left"> Approximating Optimal Test Functions</h4><hr>
-				<div class="col-md-12" markdown="1" align="left" vertical-align="center"><p>Given a function $f$ on a set of shapes how can we search for a test funtion $h\in C_0(\R^3\times S^2,\R)$ and bias $\beta\in R$ such that $$f(q)\approx\langle\mu_q,h\rangle+\beta?$$</p><br><br></div>
+				<div class="col-md-12" markdown="1" align="left" vertical-align="center"><p>Given a function $f$ on a set of shapes how can we search for a test funtion $h\in C_0(\R^3\times S^2,\R)$ and bias $\beta\in \R$ such that $$f(q)\approx\langle\mu_q,h\rangle+\beta?$$</p><br><br></div>
 				<div class="col-md-6" markdown="1" align="left" vertical-align="center"><div class="fragment" data-fragment-index="2"><p>To learn a linear function in the space of varifolds, we approximate a test function using an MLP,<br> $h_\theta:\R^{6}\to\R$ with trainable parameters $\theta$.<br><br>
 				To perform multi-class classification of varifolds, we modify the architecture to learn a vector valued functions $h_\theta:\R^6\to \R^c$ where $\int_{\R^3\times S^2} h_\theta \operatorname{d}\mu$ is a $c$-dimensional vector where each entry is interpreted as a logit of the probability that $\mu$ belongs to the corresponding class.</p></div></div>
 				<div class="col-md-6" markdown="1" align="center" vertical-align="center"><div class="fragment" data-fragment-index="3"><p><img src="figs/NeuralNetworkModel.png" width="100%" /></p></div></div>
@@ -331,7 +331,7 @@
 
 				<section data-markdown>
 				<textarea data-template>
-				<h4 align="left"> Linear Regression and Classification Expeirements</h4><hr>
+				<h4 align="left"> Linear Regression and Classification Experiments</h4><hr>
 				<div class="col-md-6" markdown="1" align="left" vertical-align="center">
 					<div class="fragment" data-fragment-index="1"><p><b>Rotation Regression:</b> We perform regression on ~13k synthetically rotated human meshes (with an 80-20 training testing split). Each mesh is labeled by the rotation matrix applied to an upright mesh to generated the data. We apply the inverse of the predicted matrix to realign the testing data.
 					<br><br><b>Comparison to Optimization Baseline:</b> Our model attains superior accuracy to direct optimization over $SO(3)$. This optimization requires ~15-30s per mesh while our trained model aligns the entire test set in <15s.

@@ -38,7 +38,7 @@
 		sub {
 			font-size: 0.2em;
 		}
-		
+
 		div.title {
 			vertical-align: middle;
 			display: inline-block;
@@ -115,15 +115,34 @@
 
 				<section data-markdown>
 				<textarea data-template>
-				<h4 align="left"> Why Study Surfaces? Motivations </h4><hr>
-				<div class="row" style="margin-top: 100px;">
-				<div class="col-md-5" markdown="1" align="center" vertical-align="center">
-					<p>Biomedical/Computational Anatomy<br></p>
+				<h4 align="left"> Why Study Shapes? </h4><hr>
+				<div class="row" style="margin-top: 10px;" align="center">
+				<div class="col-md-4" markdown="1" align="center">
+					<p><b>Computational Biology/Anatomy</b><br></p>
+					<img src="figs/OnGrowthAndForm.jfif" width="45%" />
+					<img src="figs/DThomp_fishes.jfif" width="50%" />
 					<img src="figs/hearts_results.png" width="100%" />
 				</div>
-				<div class="col-md-5" markdown="1" align="center" vertical-align="center">
-					<p>Computer Vision</p>
+				<div class="col-md-4" markdown="1" align="center">
+					<p><b>Computer Vision and Bioinformatics</b></p>
+					<img src="figs/humans.png" width="100%" />
 				</div>
+				<div class="col-md-4" markdown="1" align="center">
+					<p><b>3D Graphics</b></p>
+					<img src="figs/animate.gif" width="100%" />
+					<img src="figs/animate2.gif" width="100%" />
+				</div>
+				</div>
+				<div class="row" style="margin-top: 10px;" align="center">
+						<div class="col-md-4" markdown="1" align="center">
+						<p><em>How does anatomy vary across individuals?</em></p>
+						</div>
+						<div class="col-md-4" markdown="1" align="center">
+						<p><em>Which shapes correspond to one another?</em></p>
+						</div>
+						<div class="col-md-4" markdown="1" align="center">
+						<p><em>How can we manipulate/generate shapes?</em></p>
+						</div>
 				</div>
 				</textarea>
 				</section>
@@ -262,8 +281,8 @@
 							</span>
 							<span class="fragment current-visible">
 								<p><b>H$^1$ and H$^2$ metrics [5,6]</b></p>
-								<p> Su et al. [5] proposed a 4-parameter family of first order Sobolev metrics which (for non-zero parameters) is non-degenerate on $\Imm$ and induces a non-degenerate geodesic distance on $\Shape$. <br><br> 
-								In later work [6], we also considered an approach which uses a 6-parameter family of second order metrics which contains as a subfamily the metrics of [5]. 
+								<p> Su et al. [5] proposed a 4-parameter family of first order Sobolev metrics which (for non-zero parameters) is non-degenerate on $\Imm$ and induces a non-degenerate geodesic distance on $\Shape$. <br><br>
+								In later work [6], we also considered an approach which uses a 6-parameter family of second order metrics which contains as a subfamily the metrics of [5].
 								</p>
 								<p><small>\begin{multline*}
 								G_q(h,k)=\int_M\bigg( \overbrace{a_1 g_q^{-1}(dh_m,dk_m) +b_1g_q^{-1}(dh_+,dk_+)+ c_1g_q^{-1}(dh_\bot,dk_\bot)+ d_1 g_q^{-1}(dh_0,dk_0)}^{[5]}+\\
@@ -272,7 +291,7 @@
 							</span>
 						</div>
 						</div>
-						</div>						
+						</div>
 						<hr>
 						<p><small>[1] Michor, Mumford. <i>Vanishing Geodesic Distance on Spaces of Submanifolds and Diffeomorphisms</i></small><br>
 						<small>[2] Jermyn, Klassen, Srivastava. <i>Elastic Shape Matching of Parameterized Surfaces Using Square Root Normal Fields</i></small><br>
@@ -282,8 +301,8 @@
 						<small>[6] Hartman, Sukurdeep, Klassen, Charon, Bauer. <i>Elastic shape analysis of surfaces with second-order sobolev metrics: a comprehensive numerical framework</i></small><br>
 						<small>+ many more</small></p>
 					</textarea>
-				</section>	
-				
+				</section>
+
 				<section data-markdown>
 					<textarea data-template>
 						<h4 align="left">Geodesics in $\Shape$</h4><hr>
@@ -332,7 +351,7 @@
 						<div class="row">
 							<div class="col-md-8" markdown="1" align="left">
 								<p>
-								A loss $\Gamma:\Imm\times\Imm \to \R$ is considered parameterization-blind if 
+								A loss $\Gamma:\Imm\times\Imm \to \R$ is considered parameterization-blind if
 								\begin{multline}
 								\text{for } p,q\in \Imm, \gamma_0,\gamma_1\in\Diff, \qquad
 								\Gamma(p,q) = \Gamma(p\circ\gamma_0,q\circ\gamma_1).\qquad (**)
@@ -370,7 +389,7 @@
 					<sub>[4] Roussillon & Glaunès. "Representation of surfaces with normal cycles and application to surface registration."</sub><br></p>
 					</div>
 					</textarea>
-				</section>		
+				</section>
 
 				<section data-markdown>
 					<textarea data-template>
@@ -379,13 +398,13 @@
 							<div class="col-md-5" markdown="1" align="left">
 								<p> Thus, our relaxed matching energy between $q_0$ and $q_1$ becomes</p><p>
 								$\inf\limits_{q\in C^\infty([0,1],\Imm)} \displaystyle\int_0^1 G_{q(t)}(\partial_t q(t),\partial_t q(t)) dt $ <br> $ \qquad+ \lambda_0 \|\mu_{q_0}-\mu_{q(0)}\|^2_{\mathcal{V}} + \lambda_1 \|\mu_{q_1}-\mu_{q(1)}\|^2_{\mathcal{V}}$ <br><br> with choices of the balancing parameters $\lambda_0$ and $\lambda_1$.
-								</p> 
+								</p>
 							</div>
 							<div class="col-md-4" markdown="1" align="right"><img src="figs/cat.gif" width="80%" /><br><img src="figs/ankle.gif" width="35%"/><img src="figs/pose_and_body.gif" width="35%"/></div>
 							<div class="col-md-3" markdown="1" align="left"><img src="figs/faces.gif" width="75%"/> <img src="figs/skulls.gif" width="75%" /></div>
 						</div><hr><p align="left"><sub>[1] Hartman, Sukurdeep et al. “Elastic Shape Analysis of Surfaces with Second-Order Sobolev Metrics: A Comprehensive Numerical Framework”.</sub><br></p>
 					</textarea>
-				</section>			
+				</section>
 
 				<section data-markdown>
 					<textarea data-template>
@@ -433,14 +452,14 @@
 						\begin{equation*}
 							\langle h, \mu_q \rangle = \langle h, \mu_{q\circ \gamma} \rangle.
 						\end{equation*}<br><br>
-						Thus, for a collection of test functions $h_1,...,h_N$, 
-						$$\begin{bmatrix} 
-						\langle h_1, \mu_q \rangle \\ 
-						\langle h_2, \mu_q \rangle \\ 
-						\vdots \\ 
-						\langle h_N, \mu_q \rangle 
-						\end{bmatrix} \in \R^N$$ is a 
-						fixed-dimensional, parameterization-invariant, feature vector representing $q$. 
+						Thus, for a collection of test functions $h_1,...,h_N$,
+						$$\begin{bmatrix}
+						\langle h_1, \mu_q \rangle \\
+						\langle h_2, \mu_q \rangle \\
+						\vdots \\
+						\langle h_N, \mu_q \rangle
+						\end{bmatrix} \in \R^N$$ is a
+						fixed-dimensional, parameterization-invariant, feature vector representing $q$.
 						</p>
 					</div>
 					<div class="col-md-1" markdown="1" align="center" vertical-align="center">
@@ -614,7 +633,7 @@
 					<h4 align="left">Non-linear Application of Parameterization Invariant Features</h4><hr>
 					<div class="col-md-6" markdown="1" align="left">
 						<p><br><br>We train a model which consists of a set of test functions parameterized by MLPs and a nonlinear MLP combined with the SMPL-X model for human body parameterizations.<br><br>
-						We train the model on a subset of the AMASS dataset. On a testing set with unseen identities and poses, the model attains a mean vertex error of 3.02cm with ~41k trainable parameters. 
+						We train the model on a subset of the AMASS dataset. On a testing set with unseen identities and poses, the model attains a mean vertex error of 3.02cm with ~41k trainable parameters.
 						<br><br> This performance is comparable to state-of-the-art methods such as ArtEq on the same training and testing data, which requires 1.1 million trainable parameters.</p>
 					</div>
 					<div class="col-md-1" markdown="1" align="left"></div>
@@ -639,7 +658,6 @@
 							These slides are available at:<br><a href="https://emmanuel-hartman.github.io/Talks/Slides/Auburn26/talk.html">https://emmanuel-hartman.github.io/Talks/Slides/Auburn26/talk.html</a>
 							</p>
 						</div>
-
 						<div class="col-md-6" markdown="1" align="center">
 						<img src="figs/PneumoniaNist.png" width="50%" /><img src="figs/graphs.png" width="45%" />
 						<br>

@@ -222,7 +222,7 @@
 					<div class="col-md-1" markdown="1" align="left" vertical-align="center">
 					</div>
 					<div class="col-md-8" markdown="1" align="left" vertical-align="center">
-						<p><br><b>Sobolev-Type Riemannian Metrics on the Quotient Space of Shapes</b></p><br>
+						<p><br><b>Intrinsic Riemannian Metrics on the Quotient Space of Shapes</b></p><br>
 						<p><br>Geometric Measure Theory for Parameterization Invariance</p>
 						<p><br>Parameterization Invariant Deep Learning</p><br>
 					</div>
@@ -247,7 +247,7 @@
 
 				<section data-markdown>
 					<textarea data-template>
-						<h4 align="left">Sobolev-Type Riemannian Metrics on Shape Space</h4><hr>
+						<h4 align="left">Intrinsic Riemannian Metrics on Shape Space</h4><hr>
 						<div class="row" align="left">
 						<div class="col-md-5" markdown="1" align="left">
 						<p>
@@ -310,7 +310,7 @@
 					<textarea data-template>
 						<h4 align="left">Geodesics in $\Shape$</h4><hr>
 						<div class="row">
-						<div class="col-md-8" markdown="1" align="left">
+						<div class="col-md-7" markdown="1" align="left">
 						<p>
 						The geodesic (pseudo) distance associated with $G$ on $\Imm$ is given by
 						\begin{multline*}
@@ -326,10 +326,15 @@
 						The optimization problem is complex, but leads to paths in $\Imm$ which are horizontal to the orbits of $\Diff.$
 						</p>
 						</div>
-						<div class="col-md-4" markdown="1" align="center">
-							<img src="figs/OptOrbits1.png" width="90%" />
+						<div class="col-md-5" markdown="1" align="center">
+							<br>
+							<br>
+							<br>
+							<img src="figs/spherical_geods.png" width="100%" />
 						</div>
 						</div>
+						<hr>
+						<p><small>[1] Su, Bauer, Preston, Laga, Klassen. <i>Shape analysis of surfaces using general elastic metrics</i></small></p>
 					</textarea>
 				</section>
 
@@ -340,7 +345,7 @@
 					<div class="col-md-1" markdown="1" align="left" vertical-align="center">
 					</div>
 					<div class="col-md-8" markdown="1" align="left" vertical-align="center">
-						<p><br>Sobolev-Type Riemannian Metrics on the Quotient Space of Shapes</p><br>
+						<p><br>Intrinsic Riemannian Metrics on the Quotient Space of Shapes</p><br>
 						<p><br><b>Geometric Measure Theory for Parameterization Invariance</b></p>
 						<p><br>Parameterization Invariant Deep Learning</p><br>
 					</div>
@@ -360,7 +365,7 @@
 								\Gamma(p,q) = \Gamma(p\circ\gamma_0,q\circ\gamma_1).\qquad (**)
 								\end{multline}
 								Such a loss enables a relaxed matching approach where optimization is taken over all paths in $\Imm$ with an additional parameterization-blind loss between the endpoints of the path and the source and target shape. This relaxed problem is given by<br><br>
-								$\inf\limits_{q\in C^\infty([0,1],\Imm)} \displaystyle\int_0^1 \sqrt{G_{q(t)}(\partial_t q(t),\partial_t q(t))} dt + \lambda_0 \Gamma(q(0), q_0) + \lambda_1 \Gamma(q(1), q_1)$.
+								$\inf\limits_{q\in C^\infty([0,1],\Imm)} \displaystyle\int_0^1 G_{q(t)}(\partial_t q(t),\partial_t q(t)) dt + \lambda_0 \Gamma(q(0), q_0) + \lambda_1 \Gamma(q(1), q_1)$.
 							</div>
 							<div class="col-md-4" markdown="1" align="center">
 							<img src="figs/OptOrbits_RelaxedEnds.png" width="90%" /><br>
@@ -400,7 +405,7 @@
 						<div class="row" align="left"><p></p>
 							<div class="col-md-5" markdown="1" align="left">
 								<p> Thus, our relaxed matching energy between $q_0$ and $q_1$ becomes</p><p>
-								$\inf\limits_{q\in C^\infty([0,1],\Imm)} \displaystyle\int_0^1 \sqrt{G_{q(t)}(\partial_t q(t),\partial_t q(t))} dt $ <br> $ \qquad+ \lambda_0 \|\mu_{q_0}-\mu_{q(0)}\|^2_{\mathcal{V}} + \lambda_1 \|\mu_{q_1}-\mu_{q(1)}\|^2_{\mathcal{V}}$ <br><br> with choices of the balancing parameters $\lambda_0$ and $\lambda_1$.
+								$\inf\limits_{q\in C^\infty([0,1],\Imm)} \displaystyle\int_0^1 G_{q(t)}(\partial_t q(t),\partial_t q(t)) dt $ <br> $ \qquad+ \lambda_0 \|\mu_{q_0}-\mu_{q(0)}\|^2_{\mathcal{V}} + \lambda_1 \|\mu_{q_1}-\mu_{q(1)}\|^2_{\mathcal{V}}$ <br><br> with choices of the balancing parameters $\lambda_0$ and $\lambda_1$.
 								</p>
 							</div>
 							<div class="col-md-4" markdown="1" align="right"><img src="figs/cat.gif" width="80%" /><br><img src="figs/ankle.gif" width="35%"/><img src="figs/pose_and_body.gif" width="35%"/></div>
@@ -416,7 +421,7 @@
 					<div class="col-md-1" markdown="1" align="left" vertical-align="center">
 					</div>
 					<div class="col-md-8" markdown="1" align="left" vertical-align="center">
-						<p><br>Sobolev-Type Riemannian Metrics on the Quotient Space of Shapes</p><br>
+						<p><br>Intrinsic Riemannian Metrics on the Quotient Space of Shapes</p><br>
 						<p><br>Geometric Measure Theory for Parameterization Invariance</p>
 						<p><br><b>Parameterization Invariant Deep Learning</b></p><br>
 					</div>

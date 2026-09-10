@@ -124,8 +124,11 @@
 					<img src="figs/hearts_results.png" width="100%" />
 				</div>
 				<div class="col-md-4" markdown="1" align="center">
-					<p><b>Computer Vision and Bioinformatics</b></p>
+					<p><b>Computer Vision and Biometrics</b></p>
+					<br>
 					<img src="figs/humans.png" width="100%" />
+					<br>
+					<img src="figs/face_scans.png" width="100%" />
 				</div>
 				<div class="col-md-4" markdown="1" align="center">
 					<p><b>3D Graphics</b></p>
@@ -315,7 +318,7 @@
 						\text{ where }
 						\mathcal P_{q_0}^{q_1}:= \left\{C^{\infty}([0, 1], \Imm): q(0) = q_0, q(1) = q_1\right\}.
 						\end{multline*}<br>
-						Given a metric satisfying (*), the projection $\pi:\Imm\to \Shape$ is a Riemannian submersion and the geodesic distance corresponds to a distance on $\Shape$ via
+						Given a metric satisfying (*), the projection $\pi:\Imm\to \Shape$ is a Riemannian submersion and the geodesic distance corresponds to a (psuedo-)distance on $\Shape$ via
 						\begin{multline}
 						d^{\Shape}([q_0],[q_1])=\inf_{\gamma\in \Diff} d^{\Imm}(q_0,q_1\circ\gamma)\\
 						=\inf_{\gamma\in \Diff}\inf\limits_{q\in \mathcal{P}_{q_0}^{q_1\circ\gamma}} \int_0^1\sqrt{G_{q(t)}(\partial_t q(t),\partial_t q(t))} dt.
@@ -439,36 +442,6 @@
 					<sub>[2] Kaltenmark, et al. "A general framework for curve and surface comparison and registration with oriented varifolds."</sub><br>
 					<sub>[3] Feydy et al. "Optimal transport for diffeomorphic registration"</sub><br>
 					<sub>[4] Roussillon & Glaunès. "Representation of surfaces with normal cycles and application to surface registration."</sub><br></p>
-					</div>
-					</textarea>
-				</section>
-
-				<section data-markdown>
-					<textarea data-template>
-					<h4 align="left">Test Functions as Parameterization Invariant Features</h4><hr>
-					<div class="row">
-					<div class="col-md-4" markdown="1" align="left" vertical-align="center">
-						<p>Given $h\in C_0(\R^3\times S^2), q\in\Imm, \gamma\in \Diff$,
-						\begin{equation*}
-							\langle h, \mu_q \rangle = \langle h, \mu_{q\circ \gamma} \rangle.
-						\end{equation*}<br><br>
-						Thus, for a collection of test functions $h_1,...,h_N$,
-						$$\begin{bmatrix}
-						\langle h_1, \mu_q \rangle \\
-						\langle h_2, \mu_q \rangle \\
-						\vdots \\
-						\langle h_N, \mu_q \rangle
-						\end{bmatrix} \in \R^N$$ is a
-						fixed-dimensional, parameterization-invariant, feature vector representing $q$.
-						</p>
-					</div>
-					<div class="col-md-1" markdown="1" align="center" vertical-align="center">
-					</div>
-					<div class="col-md-6" markdown="1" align="center" vertical-align="center">
-						<br>
-						<br>
-						<img src="figs/PI_feature_vector.png" width="100%" />
-					</div>
 					</div>
 					</textarea>
 				</section>
@@ -600,6 +573,40 @@
 					<div class="col-md-6" markdown="1" align="left" vertical-align="center">
 						<div class="fragment" data-fragment-index="1"><img src="figs/Regression2.png" width="100%" /></div><br>
 						<div class="fragment" data-fragment-index="2"><img src="figs/MNIST_Classify.png" width="100%" /></div>
+					</div>
+					</textarea>
+				</section>
+
+
+				<section data-markdown>
+					<textarea data-template>
+					<h4 align="left">Test Functions as Parameterization Invariant Features</h4><hr>
+					<div class="row">
+					<div class="col-md-4" markdown="1" align="left" vertical-align="center">
+						<p>Recall that for $h\in C_0(\R^3\times S^2), q\in\Imm, \gamma\in \Diff$,
+						\begin{equation*}
+							\langle h, \mu_q \rangle = \langle h, \mu_{q\circ \gamma} \rangle.
+						\end{equation*}<br><br>
+						Thus, for a collection of test functions $h_1,...,h_N$,
+						$$\begin{bmatrix}
+						\langle \mu_q, h1 \rangle \\
+						\langle \mu_q, h2 \rangle \\
+						\vdots \\
+						\langle \mu_q, h_N \rangle
+						\end{bmatrix} \in \R^N$$ is a
+						fixed-dimensional, parameterization-invariant, feature vector representing $q$.
+						</p>
+					</div>
+					<div class="col-md-1" markdown="1" align="center" vertical-align="center">
+					</div>
+					<div class="col-md-6" markdown="1" align="center" vertical-align="center">
+						<br>
+						<br>
+						<img src="figs/PI_feature_vector.png" width="100%" />
+						<br>
+						<br>
+						<div class = "fragment"> <p> What can we learn from such a representation of a shape? </p></div>
+					</div>
 					</div>
 					</textarea>
 				</section>

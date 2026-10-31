@@ -371,11 +371,11 @@
 									<h4 align="left">Leaf Classification on Flavia</h4><hr>
 									<div class="col-md-12" align="left">
 									<div class="col-md-7" align="left" style="flex:0 0 65%; font-size:0.9em;">
-									<p class="fragment fade-up" data-fragment-index="1" style="margin:0;"><strong>Task.</strong> Classify 32 leaf species fromboundary curves of leaves in the Flavia dataset. </p>
+									<p class="fragment fade-up" data-fragment-index="1" style="margin:0;"><strong>Task.</strong> Classify 32 leaf species from boundary curves of leaves in the Flavia dataset. </p>
 									<center><img class="fragment fade-up" data-fragment-index="1" src="figs/Classify.png" width="60%" /></center>
 									<p class="fragment fade-up" data-fragment-index="2" style="margin:0;"><strong>Stage 1: Embedding.</strong> Train \(\Psi^\theta\) alone with the <strong>triplet loss</strong>. This promotes clustering of same-class samples in the linear encoding space.<br><br> On the right, we display the two principal components of the learned embedding for oriented varifolds.<br><br> </p>
 									<p class="fragment fade-up" data-fragment-index="3" style="margin:0;"><strong>Stage 2: Classifier.</strong> <strong>Freeze</strong> \(\theta\) and train a nonlinear head \(C^{\theta'}\) on the fixed embeddings with <strong>cross-entropy</strong> over the species labels for a final classification. <br><br></p> <hr class="fragment fade-up" data-fragment-index="4">
-									<p class="fragment fade-up" data-fragment-index="4" style="margin:0;">We repeat this process for each of the measure representations of curves as an ablation on the proposed models. </p>
+									<p class="fragment fade-up" data-fragment-index="4" style="margin:0;">We repeat this process for each of the measure representations of curves with the same training and testing data as an ablation on the proposed models. </p>
 									</div>
 									<div class="col-md-5" align="center" style="flex:0 0 35%; font-size:0.45em;">
 									<img class="fragment fade-up" data-fragment-index="2" src="figs/flavia.png" width="90%" /> <br><br>
@@ -408,7 +408,7 @@
 						<div class="col-md-12" markdown="1" align="left">
 							<center><img src="figs/GA.png" width="50%" /></center><hr>
 							<p>This talk is based on: <a href="https://arxiv.org/abs/2506.01189">https://arxiv.org/abs/2506.01189</a>
-							and ongoing work with Nicolas Charon and Murad Hossen.<br> <b>(Murad will present some experiments using this model in the poster session!)</b></a><br>
+							and ongoing work with Nicolas Charon and Murad Hossen.<br> <b>Murad will present some experiments using this model in the poster session!</b></a><br>
 							These slides are available at:<a href="https://emmanuel-hartman.github.io/Talks/Slides/SIAMTXLA26/talk.html">https://emmanuel-hartman.github.io/Talks/Slides/SIAMTXLA/talk.html</a>
 						</p><hr><center><div class="fragment fade-left" data-fragment-index="2"><p>Thank you for your attention!</p></div></center>
 						</div>

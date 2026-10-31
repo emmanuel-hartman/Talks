@@ -223,8 +223,7 @@
 						<b>Parameterized Objects :</b> bi-Lipschitz regular embedding from $M$ to $\R^n$ <br>$$\mathcal{I} := \operatorname{Emb}_{\text{Lip}}(M,\R^n)$$<br>
 						<b>Reparameterization Group :</b> orientation preserving bi-Lipschitz homeomorphism of $M$ <br>$$\mathcal{D} := \operatorname{Diff}_{\text{Lip}}(M)$$<br>
 						<b>Shape Space:</b> We consider the space of shapes as the quotient space of equivalence classes. <br>$$\mathcal{S} := \mathcal{I}/\mathcal{D}$$ $$[q]=\{q \circ \gamma: \ \gamma \in \mathcal{D}\}$$<br><br></p>
-						<div class="fragment" data-fragment-index="2"><p>
-						</p></div></div>
+						<div class="fragment" data-fragment-index="2"> <p>How can we represent geometric data which only measures variations orthogonal to the fibers of $\mathcal{D}$?</p></div></div>
 					<div class="col-md-5" markdown="1" align="left" vertical-align="center"><br><img src="figs/shape_space.png" width="100%" /></div>
 					</textarea>
 				</section>
@@ -240,7 +239,7 @@
 					</div></div>
 					<div class="fragment" data-fragment-index="1"><p>By the Riesz-Markov-Kakutani representation theorem, $\mathcal{V}$ is the dual of $C_0(\R^n\times S^{n-1},\R)$. The duality bracket between $\mathcal{V}$ and $C_0(\R^n \times S^{n-1},\R)$ is given by $$\langle \mu , h\rangle = \int_{\R^n \times S^{n-1}} h(x,v) d\mu(x,v).$$
 					</p></div></div>
-					<div class="col-md-6" markdown="1" align="center" vertical-align="center"><img src="figs/varifold_representations2.png" width="40%" /><p> <br><br>$$ \qquad\qquad\mu_q \approx \sum_{f\in F}a_f \delta_{(c_f,n_f)}$$</p><br><br> <img src="figs/varifold_representations.png" width="100%" /></div>
+					<div class="col-md-6" markdown="1" align="center" vertical-align="center"><img src="figs/varifold_representations2.png" width="30%" /><p>$\qquad$</p><img src="figs/curve_vari.png" width="20%" /> <p><br>$$ \qquad\mu_q \approx \sum_{f\in F}a_f \delta_{(c_f,n_f)}$$</p><br><br> <img src="figs/varifold_representations.png" width="100%" /></div>
 					</div>
 					<div class="row"><hr>
 					<p align="left"><sub>[1] Charon & Trouvé. "The varifold representation of nonoriented shapes for diffeomorphic registration."</sub><br>
@@ -269,15 +268,15 @@
 						\end{bmatrix} \in \R^N$$ is a
 						fixed-dimensional, parameterization-invariant, feature vector representing $q$.<br><br>
 						</p>
-						<div class = "fragment" data-fragment-index="1" > 
+						<div class = "fragment" data-fragment-index="1" >
 						<div style="border: 4px solid #4a90e2; padding: 12px 15px; border-radius: 6px; background-color: rgba(74, 144, 226, 0.08);" align="center">
 							<p text-align="center" style="margin: 0; font-weight: 500;">What can we learn from such <br> a representation of a shape?</p>
 						</div>
 						</div>
 					</div>
 					<div class="col-md-7" markdown="1" align="center" vertical-align="center">
-						<img src="figs/PI_feature_vector.png" width="80%" />
-						<div class = "fragment" data-fragment-index="2"> 
+						<img src="figs/PI_feature_vector.png" width="70%" />
+						<div class = "fragment" data-fragment-index="2">
 							<div class="b" align="left"><div class="bbody" align="left"><b>Theorem 4 (Universal Approximation Theorem).</b> Let $\sigma: \R \rightarrow \R$ be a continuous non-polynomial function, $C$ a weak-* compact subset of $\mathcal{V}$ and $\psi:C \rightarrow \R$ a weak-* continuous function on $C$. Then for any $\varepsilon >0$, there exist $N \in \mathbb{N}$, $(h_k)_{k=1,\ldots,N}$ in $C_0(\R^n \times S^{n-1},\R)$, $(\beta_k) \in \R^N$ and $(c_k) \in \R^{N}$ such that for all $\mu \in C$:
 							\begin{equation*}
 							\left|\psi(\mu) - \sum_{k=1}^{r} c_k \sigma(\langle \mu, h_k \rangle + \beta_k) \right| \leq \varepsilon.
@@ -307,7 +306,7 @@
 					</div>
 					</div>
 					</textarea>
-				</section>			
+				</section>
 
 				<section data-markdown>
 					<textarea data-template>
@@ -323,9 +322,81 @@
 				<div class="row"><hr>
 					<p align="left"><sub>[1] Pavlakos et al., "Expressive Body Capture: 3D Hands, Face, and Body from a Single Image" </sub><br>
 					<sub>[2] Feng et al., "Generalizing Neural Human Fitting to Unseen Poses With Articulated SE(3) Equivariance"</sub><br></p>
-				</div>	
+				</div>
 				</textarea>
-				</section>				
+				</section>
+
+				<section data-markdown>
+				<textarea data-template>
+				<h4 align="left"> Modeling other Measure Theoretic Representations of Shapes</h4><hr>
+				<div class="col-md-12" align="left">
+				<div class="row fragment fade-up" data-fragment-index="1" style="display:flex; align-items:center; margin-bottom:0.5em;">
+				<div class="col-md-6" align="left" style="flex:0 0 65%; font-size:0.9em;">
+				<p style="margin:0;"><strong>Area Measures.</strong> Restricting to test functions of the form \(h(x,\vec{t})=h(x)\) removes dependence on the directional component. This corresponds to representing a shape \(q\) by its length/area measure obtained by marginalizing \(\mu_q\) with respect to its \(S^{n-1}\) component.</p>
+				</div>
+				<div class="col-md-6" align="center" style="flex:0 0 35%; font-size:0.45em;">
+				\[\begin{aligned} H^\theta&:\R^n\to\R^N\\ \Psi^\theta(\mu)&=\sum\limits_{i=1}^M w_i\, H^\theta(x_i) \end{aligned}\]
+				</div>
+				</div>
+				<div class="row fragment fade-up" data-fragment-index="2" style="display:flex; align-items:center; margin-bottom:0.5em;">
+				<div class="col-md-6" align="left" style="flex:0 0 65%; font-size:0.9em;">
+				<p style="margin:0;"><strong>Currents.</strong> Restricting to test functions of the form \(h(x,\vec{t})=v(x)\cdot\vec{t}\), where \(v\in C_0(\mathbb{R}^n,\mathbb{R}^n)\) is a vector field, yields functionals that can be interpreted as elements of the dual space \(C_0(\mathbb{R}^n,\mathbb{R}^n)^*\), corresponding to the framework of <strong>1-currents</strong>.</p>
+				</div>
+				<div class="col-md-6" align="center" style="flex:0 0 35%; font-size:0.45em;">
+				\[\begin{aligned} H^\theta&:\R^n\to\R^{N\times n}\\ \Psi^\theta(\mu)&=\sum\limits_{i=1}^M w_i\, H^\theta(x_i)\cdot\vec{t_i} \end{aligned}\]
+				</div>
+				</div>
+				<div class="row fragment fade-up" data-fragment-index="3" style="display:flex; align-items:center; margin-bottom:0.5em;">
+				<div class="col-md-6" align="left" style="flex:0 0 65%; font-size:0.9em;">
+				<p style="margin:0;"><strong>Orientation Invariant.</strong> Requiring \(h(x,\vec{t})=h(x,-\vec{t})\) makes the associated functional invariant under reversal of the tangent or normal direction. This recovers the classical <strong>unoriented varifolds</strong>.</p>
+				</div>
+				<div class="col-md-6" align="center" style="flex:0 0 35%; font-size:0.45em;">
+				\[\begin{aligned} H^\theta&:\R^{2n}\to\R^N\\ \Psi^\theta(\mu)&=\sum\limits_{i=1}^M w_i\, \hat{H}^\theta(x_i,\vec{t_i})\\ \hat{H}^\theta(x,\vec{t})&:=H^\theta(x,\vec{t})+H^\theta(x,-\vec{t}) \end{aligned}\]
+				</div>
+				</div>
+				<div class="row fragment fade-up" data-fragment-index="4" style="display:flex; align-items:center; margin-bottom:0.5em;">
+				<div class="col-md-6" align="left" style="flex:0 0 65%; font-size:0.9em;">
+				<p style="margin:0;"><strong>Rotation Invariant.</strong> Requiring \(\psi(R_{\sharp}\mu)=\psi(\mu)\) for every \(R\in O(n)\) enforces invariance under rotations and reflections. This is achieved by test functions of the form \(h_0(x,\vec{t})=f(|x|,x\cdot\vec{t})\), which depend only on the orthogonal invariants of the position and direction variables.</p>
+				</div>
+				<div class="col-md-6" align="center" style="flex:0 0 35%; font-size:0.45em;">
+				\[\begin{aligned} H^\theta&:\R^2\to\R^N\\ \Psi^\theta(\mu)&=\sum\limits_{i=1}^M w_i\, H^\theta(|x_i|,\, x_i\cdot\vec{t_i}) \end{aligned}\]
+				</div>
+				</div>
+				</div>
+				</textarea>
+				</section>
+
+				<section data-markdown>
+									<textarea data-template>
+									<h4 align="left">Leaf Classification on Flavia</h4><hr>
+									<div class="col-md-12" align="left">
+									<div class="col-md-7" align="left" style="flex:0 0 65%; font-size:0.9em;">
+									<p class="fragment fade-up" data-fragment-index="1" style="margin:0;"><strong>Task.</strong> Classify 32 leaf species fromboundary curves of leaves in the Flavia dataset. </p>
+									<center><img class="fragment fade-up" data-fragment-index="1" src="figs/Classify.png" width="60%" /></center>
+									<p class="fragment fade-up" data-fragment-index="2" style="margin:0;"><strong>Stage 1: Embedding.</strong> Train \(\Psi^\theta\) alone with the <strong>triplet loss</strong>. This promotes clustering of same-class samples in the linear encoding space.<br><br> On the right, we display the two principal components of the learned embedding for oriented varifolds.<br><br> </p>
+									<p class="fragment fade-up" data-fragment-index="3" style="margin:0;"><strong>Stage 2: Classifier.</strong> <strong>Freeze</strong> \(\theta\) and train a nonlinear head \(C^{\theta'}\) on the fixed embeddings with <strong>cross-entropy</strong> over the species labels for a final classification. <br><br></p> <hr class="fragment fade-up" data-fragment-index="4">
+									<p class="fragment fade-up" data-fragment-index="4" style="margin:0;">We repeat this process for each of the measure representations of curves as an ablation on the proposed models. </p>
+									</div>
+									<div class="col-md-5" align="center" style="flex:0 0 35%; font-size:0.45em;">
+									<img class="fragment fade-up" data-fragment-index="2" src="figs/flavia.png" width="90%" /> <br><br>
+									<div class="fragment fade-up" data-fragment-index="4">
+									<table style="border-collapse:collapse; width:100%;">
+									<thead>
+									<tr style="border-bottom:1px solid #888;"><th style="text-align:left;">Test functions</th><th>Acc \(\uparrow\)</th><th>AUC \(\uparrow\)</th><th>#P</th></tr>
+									</thead>
+									<tbody>
+									<tr><td style="text-align:left;">Measures</td><td>80.00</td><td>0.9912</td><td>15.1k</td></tr>
+									<tr><td style="text-align:left;">Currents</td><td>72.11</td><td>0.9832</td><td>16.7k</td></tr>
+									<tr><td style="text-align:left;">Rotation invariant</td><td>95.26</td><td>0.9988</td><td>15.1k</td></tr>
+									<tr style="background:rgba(128,128,128,0.15);"><td style="text-align:left;">Un-oriented varifolds</td><td><strong>98.65</strong></td><td><strong>0.9998</strong></td><td>15.2k</td></tr>
+									<tr style="background:rgba(128,128,128,0.15);"><td style="text-align:left;">Oriented varifolds</td><td><strong>98.32</strong></td><td><strong>0.9998</strong></td><td>15.2k</td></tr>
+									</tbody>
+									</table>
+									</div>
+									</div>
+									</div>
+									</textarea>
+				</section>
 
 				<section data-markdown>
 					<textarea data-template>
@@ -335,13 +406,11 @@
 						Our current work is focused on applying this model to other forms of geometric data (such as shape graphs and images).</p>
 						<div class="row">
 						<div class="col-md-12" markdown="1" align="left">
-							<center><img src="figs/GA.png" width="50%" /></center>
-							<center><p>Thank you for your attention!</p></center><hr>
-							<p>
-							This talk is based on:<a href="https://arxiv.org/abs/2506.01189">https://arxiv.org/abs/2506.01189</a><br>
-							and ongoing work with Nicolas Charon and Murad Hossen <b>(Murad will present some experiments using this model in the poster session!)</b></a><br>
+							<center><img src="figs/GA.png" width="50%" /></center><hr>
+							<p>This talk is based on: <a href="https://arxiv.org/abs/2506.01189">https://arxiv.org/abs/2506.01189</a>
+							and ongoing work with Nicolas Charon and Murad Hossen.<br> <b>(Murad will present some experiments using this model in the poster session!)</b></a><br>
 							These slides are available at:<a href="https://emmanuel-hartman.github.io/Talks/Slides/SIAMTXLA26/talk.html">https://emmanuel-hartman.github.io/Talks/Slides/SIAMTXLA/talk.html</a>
-							</p>
+						</p><hr><center><div class="fragment fade-left" data-fragment-index="2"><p>Thank you for your attention!</p></div></center>
 						</div>
 						</div>
 					</textarea>
